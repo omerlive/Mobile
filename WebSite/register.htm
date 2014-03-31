@@ -11,7 +11,6 @@
 <body>
     <div data-role="page" id="page1">
         <div data-role="header" data-position="fixed">
-           
             <h1>
                 Let's Play
             </h1>
@@ -42,16 +41,23 @@
             </div>
             <div data-role="fieldcontain">
                 <label for="email">
-                    Email:
+                    City:
                 </label>
-                <input type="text" name="email" value="" id="email" />
+                <input type="text" name="city" value="" id="city" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
-                <label for="Username">
-                    User name
+                <label for="email">
+                    User Name:
                 </label>
-                <input type="text" name="Username" value="" id="Username" />
+                <input type="text" name="userName" value="" id="email" />
+                <!--	Use id and name values -->
+            </div>
+            <div data-role="fieldcontain">
+                <label for="email">
+                    Email:
+                </label>
+                <input type="text" name="email" value="" id="email" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
@@ -68,17 +74,16 @@
                 <input type="password" name="VerifyPassword" value="" id="VerifyPassword" />
                 <!--	Use id and name values -->
             </div>
-
             <div data-role="fieldcontain">
-               <input type="file"  name="image" accept="image/*" capture>
+                <label for="Password">
+                    Profile image
+                </label>
+                <input type="file" name="image" accept="image/*" capture>
             </div>
             <div data-role="fieldcontain">
                 <a href="home.htm">
-                <input type="submit" name="" value="Submit" data-theme="a" /></a>
+                    <input type="submit" name="" value="Submit" data-theme="a" /></a>
             </div>
-
-            
-
             </form>
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed">
