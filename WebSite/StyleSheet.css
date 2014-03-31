@@ -1,0 +1,41 @@
+﻿body
+{
+}
+
+
+H1
+{
+    text-align: center;
+    font-family: Hobo Std;
+}
+H2
+{
+    text-align: center;
+    font-family: Hobo Std;
+}
+
+iframe
+{
+    max-height: 90%;
+    max-width: 100%;
+}
+p
+{
+    text-align: center;
+    font-family: Hobo Std;
+}
+
+.imgLink
+{
+    height: 70px;
+    width: 70px;
+}
+
+a {text-decoration: none}
+
+ H5
+        {
+           
+            font-family: Hobo Std;
+            color:#6699FF;
+        }
