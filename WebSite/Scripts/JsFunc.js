@@ -1,4 +1,25 @@
-﻿function bigImg(x) {
+﻿
+/* age range slider*/
+$(function () {
+
+    $('#rangeslider').slider({
+        range: true,
+        min: 0,
+        max: 100,
+        values: [25, 35],
+        slide: function (event, ui) {
+            $('#rangeval').html(ui.values[0] + " - " + ui.values[1]);
+        }
+    });
+});
+
+
+
+
+
+
+
+function bigImg(x) {
     x.style.height = "90px";
     x.style.width = "90px";
 }

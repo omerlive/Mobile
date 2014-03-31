@@ -12,22 +12,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Acme"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    </script>
-    <script>
-        $(function () {
-
-            $('#rangeslider').slider({
-                range: true,
-                min: 0,
-                max: 100,
-                values: [25, 35],
-                slide: function (event, ui) {
-                    $('#rangeval').html(ui.values[0] + " - " + ui.values[1]);
-                }
-            });
-        });
-  
-    </script>
+     
 </head>
 <body>
     <div data-role="page" id="page1">
@@ -63,7 +48,8 @@
             <div data-role="fieldcontain">
                 <label for="flip1">
                     Num of Partic:</label>
-                <input type="text" name="NOP" value="" id="NOP" />
+                <input type="text" name="NOP" value="" id="NOPTxt" />
+                
             </div>
             <div data-role="fieldcontain">
                 <div id="rangedval">
@@ -81,6 +67,7 @@
                     <option value="Private">Private</option>
                 </select>
             </div>
+        
             <div data-role="fieldcontain">
                 <label for="flip2">
                     Frequecy:
@@ -91,6 +78,7 @@
                     <option value="Every Month">Every Month</option>
                 </select>
             </div>
+              <input type="button" onclick="AddEvent()"  value="Confirm And Publish">
             </form>
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed">
@@ -104,4 +92,37 @@
         </div>
     </div>
 </body>
+    <script type="text/javascript">
+
+        function AddEvent(Nop) {
+         var a=  document.getElementById("NOPTxt");
+         nop = a.value;
+     }
+        /-----------------------------------------------------------------------
+        // Send the path point to the server
+        //-----------------------------------------------------------------------
+        function setPathPoint(lat, lng, groupName) {
+            var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'groupName:"' + groupName + '"}';
+            
+            $.ajax({ // ajax call starts
+                url: 'TreasureAjax.asmx/setPathPoint',   // server side method
+                data: dataString,    // name without the xml extension
+                type: 'POST',
+                dataType: 'json', // Choosing a JSON datatype
+                contentType: 'application/json; charset = utf-8',
+                success: function (data) // Variable data contains the data we get from serverside
+                {
+                    alert("PathPoint set at lat:" + lat + " , lng: " + lng );
+                }, // end of success
+                error: function (e) {
+                    alert("failed in setPathPoint :( " + e.responseText);
+                } // end of error
+            }) // end of ajax call
+        }
+
+
+        function Itsworek() {
+            alert("work");
+        }
+    </script>
 </html>
