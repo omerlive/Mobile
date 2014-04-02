@@ -67,9 +67,9 @@
                     Frequecy:
                 </label>
                 <select name="frecFlip" id="frecFlip" data-role="checkbox">
-                    <option value="Once">Once</option>
-                    <option value="Every Week">Every Week</option>
-                    <option value="Every Month">Every Month</option>
+                    <option value="1">Once</option>
+                    <option value="2">Every Week</option>
+                    <option value="3">Every Month</option>
                 </select>
             </div>
               <input type="button" onclick="AddEvent()"  value="Confirm And Publish">
@@ -104,18 +104,19 @@
             //לתת Id הגיוני
             lat = 35;
             lng = 45;
-            addrss = "גן חיים";
+            address = "גן חיים";
             time = "11/5/2014 19:00";
             comments="go go go"
-            alert(category);
-            setPOI(lat, lng, nop, category, type, freuncy, minAge, maxAge, addrss, time, comments)  
+            setPOI(lat, lng, nop, category, type, freuncy, minAge, maxAge, address, time, comments)  
         }
         //-----------------------------------------------------------------------
         // Send the target point to the server
         //-----------------------------------------------------------------------
-        function setPOI(lat, lng, nop, category, type, freuncy, minAge, maxAge, addrss, time) {
-            var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:"' + nop + '",' + 'category:"' + category + '",' + 'type:"' + type + '",' + 'freuncy:"' + freuncy + 'minAge:"' + minAge + 'maxAge:"' + maxAge + 'addrss:"'+ addrss + 'time:"'+ time + 'comments;"'+comments+ '"}';
-            alert(dataString);
+       
+       
+        function setPOI(lat, lng, nop, category, type, freuncy, minAge, maxAge, address, time, comments) {
+            var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'freuncy:' + freuncy + ',' +'minAge:' + minAge + ',' +   'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '"}';
+           
             $.ajax({ // ajax call starts
                 url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/setPOI',   // server side method
                 data: dataString,    // the parameters sent to the server
