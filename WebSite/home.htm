@@ -8,17 +8,17 @@
     <script src="JsFunc.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div data-role="page" id="page1">
-        <div data-role="header">
+    <div data-role="page" id="page1" >
+        <div data-role="header" data-theme="b" >
         
             <h1>
-                Let's play
+              <img src="icons/logo.png" height="40px" />
             </h1>
-            <a href="index.html" data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" >Log out</a>
-             <a href="index.html" data-role="button" data-icon="plus" data-iconpos="right" >Create event</a>
+            <a href="index.html"   data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" >Log out</a>
+             <a href="AddEvent.htm"  data-role="button" data-icon="plus" data-iconpos="right" >Create event</a>
         </div>
         <article data-role="content">
 
@@ -26,7 +26,7 @@
         </div>
             </article>  
 
-        <div data-theme="a" data-role="footer" data-position="fixed">
+        <div data-theme="a" data-role="footer" data-position="fixed" data-theme="b">
             <nav data-role="navbar" data-divider-theme="c">
                 <ul>
                     <li><a href="index.htm" data-icon="home">Home</a></li>
@@ -43,29 +43,45 @@
 
     function initialize() {
 
-        // center the map in Ruppin
-        var ruppinPos = new Object();
-        ruppinPos.lat = 32.343193;
-        ruppinPos.long = 34.911908;
-        myLatlng = new google.maps.LatLng(ruppinPos.lat, ruppinPos.long);
-        var mapOptions = {
-            zoom: 6,
-            center: myLatlng,
-            mapTypeId: google.maps.MapTypeId.Map
-        }
-        map = new google.maps.Map(document.getElementById('mapholder'), mapOptions);
-
-        var marker1 = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Ruppin'
-        });
-        getPOIList();
+       getLocation();
+       getPOIList();
 
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
+
+    function getLocation() {
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else { alert("Geolocation is not supported by this browser."); }
+    }
+
+    function showPosition(position) {
+        pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true
+        });
+
+        var myOptions = {
+            center: pos, zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+        };
+
+        map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+
+        google.maps.event.addListener(map, 'click', function (e) {
+            placeMarker(e.latLng, map, true);
+        });
+
+
+        geocoder = new google.maps.Geocoder();
+        directionsDisplay.setMap(map); alert(pos);
+    }
     //-----------------------------------------------------------------------
     // get the getPOIList 
     //-----------------------------------------------------------------------
