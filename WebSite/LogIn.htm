@@ -35,7 +35,7 @@
             </div>
             <div data-role="fieldcontain">
                 <a href="register.htm" data-role="button" data-inline="true" data-theme="b">Register</a>
-                <a href="home.htm" data-role="button" data-inline="true" data-theme="b">Log In</a>
+                <a href="home.htm" data-role="button" data-inline="true" data-theme="b" onclick="LogInJson()">Log In</a>
             </div>
             <!--	Use id and name values -->
             </form>
@@ -48,6 +48,8 @@
 
 <script type="text/javascript">
 
+    
+
     function LogInJson() {
 
         email = document.getElementById("emailTb").value;
@@ -55,7 +57,7 @@
 
         var dataString = '{Email:"' + email + '",' + 'Password:"' + password + '"}';
         $.ajax({ // ajax call starts
-            url: 'TreasureAjax.asmx/LogIn',   // server side method
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/Login',   // server side method
             data: dataString,    // parameters passed to the server
             type: 'POST',
             dataType: 'json', // Choosing a JSON datatype
@@ -64,7 +66,9 @@
             {
                 ans = $.parseJSON(data.d);
                 // run on all the POIs and display them
-                alert(ans);
+                if (typeof (Storage) !== "undefined") {
+                    sessionStorage.Email = document.getElementById("emailTb").value; ;
+                }
             }, // end of success
             error: function (e) {
                 alert("failed in getTarget :( " + e.responseText);
