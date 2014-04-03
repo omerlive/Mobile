@@ -37,7 +37,7 @@
             </div>
            
             <div data-role="fieldcontain">
-                <a href="register.htm" data-role="button" data-inline="true" data-theme="b">Register</a>
+                <a  data-role="button" data-inline="true"  onclick="GotoRegister()" data-theme="b">Register</a>
 
                 <a  data-role="button" data-inline="true" data-theme="b" onclick="LogInJson()">Log In</a>
             </div>
@@ -89,6 +89,11 @@
         }) // end of ajax call
     }
 
+    function GotoRegister() {
+
+        window.location.assign("register.htm");
+    }
+    
 
 
 </script>
