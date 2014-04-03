@@ -10,35 +10,27 @@
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div data-role="page" id="pagehome" >
-        <div data-role="header" data-theme="b" >
-        
+    <div data-role="page" id="pagehome">
+        <div data-role="header" data-theme="b">
             <h1>
-              <img src="icons/logo.png" height="40px" />
+                <img src="icons/logo.png" height="50px" />
             </h1>
-            <a   data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" onclick="GotoLogin()" >Log out</a>
-           <!--  <input type="button" value="Create event" onclick="GotoMap()">-->
-             <a   data-role="button" data-icon="plus" data-iconpos="right" onclick="GotoMap()" >Create event</a> 
         </div>
-        <article data-role="content">
-
-         <div id="mapholder" style="width: 800px; height: 800px">
+        <div data-role="content">
+            <div id="mapholder" style="height: 300px">
+            </div>
         </div>
-            </article>  
-
         <div data-theme="a" data-role="footer" data-position="fixed" data-theme="b">
             <nav data-role="navbar" data-divider-theme="b">
                 <ul>
                     <li><a href="home.htm" data-icon="home">Home</a></li>
                     <li><a href="contact.htm" data-icon="info">Events</a></li>
-                    <li><a href="Bands.htm" data-icon="star" data-iconpos="bottom">Profile</a></li>
+                    <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
                 </ul>
             </nav>
         </div>
     </div>
-
 </body>
-
 <script type="text/javascript">
 
     var eventNum;
@@ -57,7 +49,6 @@
         }
         map = new google.maps.Map(document.getElementById('mapholder'), mapOptions);
 
-       
         getPOIList();
 
     }
@@ -68,7 +59,7 @@
     // get the getPOIList 
     //-----------------------------------------------------------------------
     function getPOIList() {
-       
+
         $.ajax({ // ajax call starts
             url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/getEvents',   // server side method
             // parameters passed to the server
@@ -116,14 +107,10 @@
             infowindow1.open(map, marker);
         });
 
-
-
     }
 
     function JoinEvent(num, lat, lng) {
 
-//        var a = document.getElementById("MainContent_eventNumHF");
-//        a.value = num;
         var EventPos = new Object();
         EventPos.lat = lat;
         EventPos.long = lng;
@@ -143,14 +130,14 @@
 
 
     function GotoMap() {
-      
+
         window.location.assign("mapPage.htm");
     }
     function GotoLogin() {
 
         window.location.assign("LogIn.htm");
     }
-    
+
 
     function CloseInfo()
     { infowindow2.close(map); }
@@ -158,7 +145,7 @@
 
     if (sessionStorage.Email) {
         Email = sessionStorage.Email;
-        
+
     }
 
 
@@ -178,10 +165,10 @@
             {
                 ans = $.parseJSON(data.d);
                 if (ans == "Success") {
-                    alert("You jo");
+                    alert("You have joined to the event! :)");
                 }
                 else {
-                    alert("NOt GOOD");
+                    alert("This event is already full.");
                 }
 
             }, // end of success
