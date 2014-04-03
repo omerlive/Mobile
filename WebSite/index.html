@@ -66,7 +66,7 @@
     function getPOIList() {
 
         $.ajax({ // ajax call starts
-            url: 'WebService.asmx/getEvents',   // server side method
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/getEvents',   // server side method
             // parameters passed to the server
             type: 'POST',
             dataType: 'json', // Choosing a JSON datatype
@@ -101,8 +101,8 @@
 
         });
 
-        var contentString = '<div id="content" > <img src ="' + poiPoint.ImageUrl + '" style="width: 80px"/></br><h1>' + poiPoint.Description + '</h1><div id="bodyContent" style="color:Black">'
-              + '<p>Age Range: ' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p>' + '<p>Address: ' + poiPoint.Address + '</p>' + '<p>Date & Time: ' + poiPoint.DateTimeStr + '</p>' + '</div><input type="button" class="myButton" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')" id="btnJoinMap" value="Join"/><p>' + '</div>';
+        var contentString = '<div id="content" height:190px" > <img src ="' + poiPoint.ImageUrl + '" style="width: 20px"/></br><h1>' + poiPoint.Description + '</h1><div id="bodyContent" style="color:Black">'
+              + '<h4 style="color:Blue" >Age Range:</h4>' + poiPoint.MinAge + '-' + poiPoint.MaxAge +  '<p><h4 style="color:Blue" >Address:</h4> ' + poiPoint.Address + '</p>' + '<p><h4 style="color:Blue" >Date & Time:</h4> ' + poiPoint.DateTimeStr + '</p>' + '</div><input type="button" class="myButton" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')" id="btnJoinMap" value="Join"/><p>' + '</div>';
 
         var infowindow1 = new google.maps.InfoWindow({
             content: contentString
@@ -148,16 +148,13 @@
     { infowindow2.close(map); }
 
 
-    if (sessionStorage.Email) {
-        Email = sessionStorage.Email;
-
-    }
 
 
     function JoinEventJson() {
-        alert(Email);
-        alert(eventNum);
 
+        if (sessionStorage.Email) {
+            Email = sessionStorage.Email;
+           
         var dataString = '{Email:"' + Email + '",' + 'EventNum:"' + eventNum + '"}';
 
         $.ajax({ // ajax call starts
@@ -182,6 +179,12 @@
             } // end of error
         }) // end of ajax call
     }
+    else {
+        alert("you have to login");
+    }
+    
+}
+
         
 </script>
 </html>
