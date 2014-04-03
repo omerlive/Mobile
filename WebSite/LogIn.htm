@@ -10,7 +10,7 @@
 </head>
 <body>
     <div data-role="page" id="page1">
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" data-theme="b">
            
             <h1>
                 Let's Play
@@ -21,21 +21,21 @@
             <!--	Wrap Inputs in fieldcontain which will sort out borders and padding, can cause layout to break	-->
             <div data-role="fieldcontain">
                 <label for="Username">
-                    Username:
+                    Email:
                 </label>
-                <input type="text" name="Username" value="" id="Username" />
+                <input type="text" name="Email" value="" id="emailTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="Password">
                     Password:
                 </label>
-                <input type="password" name="Password" value="" id="Password" />
+                <input type="password" name="Password" value="" id="passwordTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
-                <a href="register.htm" data-role="button" data-inline="true" data-theme="a">Sign Up</a>
-                <a href="home.htm" data-role="button" data-inline="true" data-theme="a">Log In</a>
+                <a href="register.htm" data-role="button" data-inline="true" data-theme="b">Register</a>
+                <a href="home.htm" data-role="button" data-inline="true" data-theme="b">Log In</a>
             </div>
             <!--	Use id and name values -->
             </form>
@@ -45,4 +45,34 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+
+    function LogInJson() {
+
+        email = document.getElementById("emailTb").value;
+        password = document.getElementById("passwordTb").value;
+
+        var dataString = '{Email:"' + email + '",' + 'Password:"' + password + '"}';
+        $.ajax({ // ajax call starts
+            url: 'TreasureAjax.asmx/LogIn',   // server side method
+            data: dataString,    // parameters passed to the server
+            type: 'POST',
+            dataType: 'json', // Choosing a JSON datatype
+            contentType: 'application/json; charset = utf-8',
+            success: function (data) // Variable data contains the data we get from server side
+            {
+                ans = $.parseJSON(data.d);
+                // run on all the POIs and display them
+                alert(ans);
+            }, // end of success
+            error: function (e) {
+                alert("failed in getTarget :( " + e.responseText);
+            } // end of error
+        }) // end of ajax call
+    }
+
+
+
+</script>
 </html>
