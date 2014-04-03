@@ -8,6 +8,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
     <script src="phonegap.js" type="text/javascript"></script>
 </head>
 <body>
@@ -16,6 +17,8 @@
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
+       <a data-role="button" data-icon="plus" onclick="GotoLogin()">Login</a>
+           
         </div>
         <div data-role="content">
             <div id="mapholder" style="height: 300px">
@@ -24,7 +27,7 @@
         <div data-theme="b" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="b">
                 <ul>
-                    <li><a href="index.html" data-icon="home">Home</a></li>
+                    <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
                     <li><a href="#" data-icon="info">Events</a></li>
                     <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
                 </ul>
@@ -37,7 +40,7 @@
     var eventNum;
 
     function initialize() {
-
+    
         // center the map in Ruppin
         var ruppinPos = new Object();
         ruppinPos.lat = 32.082594018608;
@@ -51,7 +54,8 @@
         map = new google.maps.Map(document.getElementById('mapholder'), mapOptions);
 
         getPOIList();
-
+        document.addEventListener("deviceready", onDeviceReady, false);
+         $.mobile.page.prototype.options.domCache = true;
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -62,7 +66,7 @@
     function getPOIList() {
 
         $.ajax({ // ajax call starts
-            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/getEvents',   // server side method
+            url: 'WebService.asmx/getEvents',   // server side method
             // parameters passed to the server
             type: 'POST',
             dataType: 'json', // Choosing a JSON datatype
@@ -132,11 +136,11 @@
 
     function GotoMap() {
 
-        window.location.assign("mapPage.htm");
+        window.location.assign("mapPage.html");
     }
     function GotoLogin() {
 
-        window.location.assign("LogIn.htm");
+        window.location.assign("LogIn.html");
     }
 
 
