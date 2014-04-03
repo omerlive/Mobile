@@ -52,6 +52,8 @@
 
 <script type="text/javascript">
 
+    
+
     function LogInJson() {
        
         email = document.getElementById("emailTb").value;
@@ -75,8 +77,9 @@
                     document.getElementById("errorLbl").innerText = "Worng Password ";
                 }
                 // run on all the POIs and display them
-
-
+                if (typeof (Storage) !== "undefined") {
+                    sessionStorage.Email = document.getElementById("emailTb").value; ;
+                }
             }, // end of success
             error: function (e) {
                 alert("failed in getTarget :( " + e.responseText);
