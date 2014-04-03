@@ -15,11 +15,11 @@
             <h1>
                 <img src="icons/logo.png" height="40px" />
             </h1>
-            <a href="#myPopupDialog" data-rel="popup" data-position-to="window" data-transition="fade"
+            <a href="#myPopupDialog" data-transition="flip" data-rel="popup" data-position-to="window" data-transition="fade"
                 data-role="button" data-icon="back" data-iconpos="right">back </a>
         </div>
         <div>
-            <div data-role="popup" id="myPopupDialog">
+            <div data-role="popup" id="myPopupDialog"  >
                 <h2>
                     Are you sure you want to leave this page?</h2>
                 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
@@ -32,6 +32,7 @@
                         <tr>
                             <td colspan="2"> 
                                 <input type="text" value="" id="locationTB" placeholder="Insert an address" />
+                                
                             </td>
                          
                         </tr>
@@ -263,6 +264,10 @@
         function startRoute() {
             routeStatus++;
         }
+
+ 
+         
+
         //only to set the center and marker not to create the map obejct again and again!
         function changePostion(position) {
             if (marker != null) {
