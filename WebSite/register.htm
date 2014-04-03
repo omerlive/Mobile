@@ -22,67 +22,67 @@
                 <label for="firstName">
                     First Name:
                 </label>
-                <input type="text" name="firstName" value="" id="firstName" />
+                <input type="text" name="firstName" value="" id="firstNameTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="lastName">
                     Last Name:
                 </label>
-                <input type="text" name="lastName" value="" id="lastName" />
+                <input type="text" name="lastName" value="" id="lastNameTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="age">
                     Age:
                 </label>
-                <input min="7" max="120" type="range" name="age" value="" id="age" />
+                <input min="7" max="120" type="range" name="age" value="" id="ageTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
-                <label for="email">
+                <label for="city">
                     City:
                 </label>
-                <input type="text" name="city" value="" id="city" />
+                <input type="text" name="City" value="" id="cityTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
-                <label for="email">
+                <label for="userName">
                     User Name:
                 </label>
-                <input type="text" name="userName" value="" id="email" />
+                <input type="text" name="UserName" value="" id="userNameTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="email">
                     Email:
                 </label>
-                <input type="text" name="email" value="" id="email" />
+                <input type="text" name="Email" value="" id="emailTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="Password">
                     Password
                 </label>
-                <input type="password" name="Password" value="" id="Password" />
+                <input type="password" name="Password" value="" id="PasswordTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
-                <label for="Password">
+                <label for="verifyPassword">
                     Verify Password
                 </label>
-                <input type="password" name="VerifyPassword" value="" id="VerifyPassword" />
+                <input type="password" name="VerifyPassword" value="" id="verifyPasswordTb" />
                 <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="Password">
                     Profile image
                 </label>
-                <input type="file" name="image" accept="image/*" capture>
+                <input type="file" name="image" id="image" accept="image/*" capture>
             </div>
             <div data-role="fieldcontain">
                 <a href="home.htm">
-                    <input type="submit" name="" value="Submit" data-theme="a" /></a>
+                    <input type="submit" name="" value="Submit" data-theme="a" onclick="NewUser()" /></a>
             </div>
             </form>
         </div>
@@ -97,4 +97,25 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+
+    function NewUser() {
+
+        
+        firstName = document.getElementById("firstNameTb").value;
+        lastName = document.getElementById("lastNameTb").value;
+        age = document.getElementById("ageTb").value;
+        city = document.getElementById("cityTb").value;
+        userName = document.getElementById("userNameTb").value;
+        email = document.getElementById("emailTb").value;
+        Password = document.getElementById("PasswordTb").value;
+        verifyPassword = document.getElementById("verifyPasswordTb").value;
+        imageUrl = "";
+//        imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
+
+        AddUser(firstName, lastName, age, city, userName, email, Password, verifyPassword, imageUrl);
+
+    }
+
+</script>
 </html>
