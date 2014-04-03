@@ -13,46 +13,38 @@
     <div data-role="page" id="pagemap">
         <div data-role="header" data-theme="b">
             <h1>
-                <img src="icons/logo.png" height="40px" />
+                <img src="icons/logo.png" height="50px" />
             </h1>
-            <a href="#myPopupDialog" data-transition="flip" data-rel="popup" data-position-to="window" data-transition="fade"
-                data-role="button" data-icon="back" data-iconpos="right">back </a>
+            <a href data-role="button" id="getLocation" data-icon="location" data-iconpos="left" />
+            My Location</a> <a href="#myPopupDialog" data-transition="flip" data-rel="popup"
+                data-position-to="window" data-transition="fade" data-role="button" data-icon="back"
+                data-iconpos="right">Back</a>
         </div>
-        <div>
-            <div data-role="popup" id="myPopupDialog"  >
-                <h2>
-                    Are you sure you want to leave this page?</h2>
-                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
-                    No </a><a href="home.htm" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
-                        Yes</a>
+        <div data-role="popup" id="myPopupDialog">
+            <h2>
+                Are you sure you want to leave this page?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
+                No </a><a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
+                    Yes</a>
+        </div>
+        <div data-role="content">
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a">
+                    <input type="text" value="" id="locationTB" placeholder="Insert an address" /></div>
+                <div class="ui-block-b">
+                    <input type="button" id="getPosition" class="myButton" value="Find"  data-mini="false"/></div>
+            </fieldset>
+            <!--<div data-role="controlgroup" data-type="horizontal">
+                <input type="text" value="" id="locationTB" placeholder="Insert an address" />
+                <input type="button" id="getPosition" class="myButton" value="Find" />
+            </div>-->
+            <div id="mapholder" style="height: 300px">
             </div>
-            <article data-role="content">
-                <div>
-                    <table
-                        <tr>
-                            <td colspan="2"> 
-                                <input type="text" value="" id="locationTB" placeholder="Insert an address" />
-                                
-                            </td>
-                         
-                        </tr>
-                        <tr> 
-                          <td style="padding: 0px 10px 0px 10px">
-                                <input type="button" id="getPosition" class="myButton" value="Find" />
-                            </td>
-                            <td>
-                                <input type="button" id="getLocation" value="Find My Location" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="mapholder" style="height: 600px; width: 600px">
-                </div>
-         <!--     <!--  <input type="submit" data-inline="true" value="Submit"  onclick="GoBack()">-->
-            <!--     <a href="AddEvent.htm" data-role="button">confirm location</a>-->-->
-                <input type="button" value="Confirm location " onclick="GoBack()">
-            </article>
+            <!--     <!--  <input type="submit" data-inline="true" value="Submit"  onclick="GoBack()">-->
+            <!--     <a href="AddEvent.htm" data-role="button">confirm location</a>-->
+            <input type="button" value="Submit Location" onclick="GoBack()">
         </div>
+    </div>
 </body>
 <script type="text/javascript">
  
@@ -110,9 +102,6 @@
             }
             else { alert("Geolocation is not supported by this browser."); }   
         }
-
-       
-
 
       
 

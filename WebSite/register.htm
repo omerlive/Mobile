@@ -10,95 +10,71 @@
 </head>
 <body>
     <div data-role="page" id="registerpage">
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" data-theme="b">
             <h1>
-                Let's Play
+                <img src="icons/logo.png" height="50px" />
             </h1>
         </div>
         <div data-role="content">
-            
-            <!--	Wrap Inputs in fieldcontain which will sort out borders and padding, can cause layout to break	-->
             <div data-role="fieldcontain">
                 <label for="firstName">
                     First Name:
                 </label>
                 <input type="text" name="firstName" value="" id="firstNameTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="lastName">
                     Last Name:
                 </label>
                 <input type="text" name="lastName" value="" id="lastNameTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="age">
                     Age:
                 </label>
                 <input min="7" max="120" type="range" name="age" value="" id="ageTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="city">
                     City:
                 </label>
                 <input type="text" name="City" value="" id="cityTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="userName">
                     User Name:
                 </label>
                 <input type="text" name="UserName" value="" id="userNameTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="email">
                     Email:
                 </label>
                 <input type="text" name="Email" value="" id="emailTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="Password">
                     Password
                 </label>
                 <input type="password" name="Password" value="" id="PasswordTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="verifyPassword">
                     Verify Password
                 </label>
                 <input type="password" name="VerifyPassword" value="" id="verifyPasswordTb" />
-                <!--	Use id and name values -->
-                <label id="errorLbl">    </label>
+                <label id="errorLbl" style="color: #FF3300">
+                </label>
             </div>
             <div data-role="fieldcontain">
                 <label for="image">
-                    Profile image
+                    Profile Image
                 </label>
                 <input type="file" name="image" id="image" accept="image/*" capture>
             </div>
-                <div> <label id="Label1">    </label>
-            </div>
-           
             <div data-role="fieldcontain">
-             <!--   <a href="home.htm">
-                    <input type="submit" name="" value="Submit" data-theme="a" onclick="NewUser()" /></a>-->
-                     <input type="submit" id="RegisBtn" onclick="NewUser()" value="Register">
+                <input type="submit" id="RegisBtn" onclick="NewUser()" value="Register">
             </div>
-            
-        </div>
-        <div data-theme="a" data-role="footer" data-position="fixed">
-            <nav data-role="navbar" data-divider-theme="c">
-                <ul>
-                    <li><a href="home.htm" data-icon="home">Home</a></li>
-                    <li><a href="contact.htm" data-icon="info">Events</a></li>
-                    <li><a href="Bands.htm" data-icon="star" data-iconpos="bottom">Profile</a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 </body>
@@ -118,16 +94,16 @@
         //      imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
         if (verifyPassword == Password) {
             AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl);
-        
 
-     }
-     else {
-         
-         document.getElementById("errorLbl").innerText = "Password is not match";
-         
-     }
 
-       
+        }
+        else {
+
+            document.getElementById("errorLbl").innerText = "Password is not match";
+
+        }
+
+
 
     }
     //-----------------------------------------------------------------------
@@ -137,7 +113,7 @@
 
     function AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl) {
         var dataString = '{UserName:"' + userName + '",' + 'Password:"' + Password + '",' + 'FirstName:"' + firstName + '",' + 'LastName:"' + lastName + '",' + 'Age:' + age + ',' + 'City:"' + city + '",' + 'Email:"' + email + '",' + 'imageUrl:"' + imageUrl + '"}';
-       
+
         $.ajax({ // ajax call starts
             url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/Adduser', // server side method
             data: dataString,    // the parameters sent to the server
@@ -145,16 +121,17 @@
             dataType: 'json', // Choosing a JSON datatype
             contentType: 'application/json; charset = utf-8',
             success: function (data) // Variable data contains the data we get from serverside
-            {  ans = $.parseJSON(data.d);
-               alert(ans);
-//                
-//                if (ans == 1) {
-//                    window.location.assign("LogIn.htm");
-//                }
-//                else {
-//                    document.getElementById("errorLbl").innerText = "register faild ";
-//                }
-                
+            {
+                ans = $.parseJSON(data.d);
+                alert(ans);
+                //                
+                //                if (ans == 1) {
+                //                    window.location.assign("LogIn.htm");
+                //                }
+                //                else {
+                //                    document.getElementById("errorLbl").innerText = "register faild ";
+                //                }
+
             }, // end of success
             error: function (e) {
                 alert("error in jason");

@@ -17,7 +17,7 @@
 <body>
     <div data-role="page" id="page1">
         <div data-role="header" data-position="fixed">
-            <a href="index.htm" data-role="button" data-icon="home" data-iconpos="notext">home</a>
+            <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">home</a>
             <h1>
                 New Event
             </h1>
@@ -112,7 +112,7 @@
     <div data-theme="a" data-role="footer" data-position="fixed">
         <nav data-role="navbar" data-divider-theme="c">
                 <ul>
-                    <li><a href="index.htm" data-icon="home">Home</a></li>
+                    <li><a href="index.html" data-icon="home">Home</a></li>
                     <li><a href="contact.htm" data-icon="info">Events</a></li>
                     <li><a href="Bands.htm" data-icon="star" data-iconpos="bottom">Profile</a></li>
                 </ul>

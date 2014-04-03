@@ -71,7 +71,7 @@
             {
                 ans = $.parseJSON(data.d);
                 if (ans == ok) {
-                    window.location.assign("home.htm");
+                    window.location.assign("index.html");
                 }
                 else {
                     document.getElementById("errorLbl").innerText = "Worng Password ";

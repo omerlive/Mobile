@@ -11,51 +11,38 @@
 <body>
     <div data-role="page" id="page1">
         <div data-role="header" data-position="fixed" data-theme="b">
-           
             <h1>
-                Let's Play
+                <img src="icons/logo.png" height="50px" />
             </h1>
         </div>
         <div data-role="content">
-            <form action="index.html" method="get">
-            <!--	Wrap Inputs in fieldcontain which will sort out borders and padding, can cause layout to break	-->
             <div data-role="fieldcontain">
                 <label for="Username">
                     Email:
                 </label>
                 <input type="text" name="Email" value="" id="emailTb" />
-                <!--	Use id and name values -->
             </div>
             <div data-role="fieldcontain">
                 <label for="Password">
                     Password:
                 </label>
                 <input type="password" name="Password" value="" id="passwordTb" />
-                <!--	Use id and name values -->
             </div>
-            <div> <label id="errorLbl">    </label>
+            <div>
+                <label id="errorLbl" style="color: #FF3300">
+                </label>
             </div>
-           
             <div data-role="fieldcontain">
-                <a  data-role="button" data-inline="true"  onclick="GotoRegister()" data-theme="b">Register</a>
-
-                <a  data-role="button" data-inline="true" data-theme="b" onclick="LogInJson()">Log In</a>
+                <a data-role="button" data-inline="true" onclick="GotoRegister()" data-theme="b">Register</a>
+                <a data-role="button" data-inline="true" data-theme="b" onclick="LogInJson()">Log In</a>
             </div>
-            <!--	Use id and name values -->
-            </form>
-        </div>
-        <div data-theme="a" data-role="footer" data-position="fixed">
-            
         </div>
     </div>
 </body>
-
 <script type="text/javascript">
 
-    
-
     function LogInJson() {
-        
+
         email = document.getElementById("emailTb").value;
         password = document.getElementById("passwordTb").value;
 
@@ -75,7 +62,7 @@
                     if (typeof (Storage) !== "undefined") {
                         sessionStorage.Email = document.getElementById("emailTb").value;
                     }
-                    window.location.assign("home.htm");
+                    window.location.assign("index.htm");
                 }
                 else {
                     document.getElementById("errorLbl").innerText = "Wrong Password ";
