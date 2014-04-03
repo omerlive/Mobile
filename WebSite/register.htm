@@ -73,16 +73,21 @@
                 </label>
                 <input type="password" name="VerifyPassword" value="" id="verifyPasswordTb" />
                 <!--	Use id and name values -->
+                <label id="errorLbl">    </label>
             </div>
             <div data-role="fieldcontain">
-                <label for="Password">
+                <label for="image">
                     Profile image
                 </label>
                 <input type="file" name="image" id="image" accept="image/*" capture>
             </div>
+                <div> <label id="Label1">    </label>
+            </div>
+           
             <div data-role="fieldcontain">
-                <a href="home.htm">
-                    <input type="submit" name="" value="Submit" data-theme="a" onclick="NewUser()" /></a>
+              <!--  <a href="home.htm">
+                    <input type="submit" name="" value="Submit" data-theme="a" onclick="NewUser()" /></a>-->
+                     <input type="submit" id="RegisBtn" onclick="NewUser()" value="Register">
             </div>
             </form>
         </div>
@@ -101,7 +106,6 @@
 
     function NewUser() {
 
-        
         firstName = document.getElementById("firstNameTb").value;
         lastName = document.getElementById("lastNameTb").value;
         age = document.getElementById("ageTb").value;
@@ -111,11 +115,53 @@
         Password = document.getElementById("PasswordTb").value;
         verifyPassword = document.getElementById("verifyPasswordTb").value;
         imageUrl = "";
-//        imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
+        //      imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
+        if (verifyPassword == Password) {
+            AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl);
+           window.location.assign("LogIn.htm");
 
-        AddUser(firstName, lastName, age, city, userName, email, Password, verifyPassword, imageUrl);
+     }
+     else {
+         
+         document.getElementById("errorLbl").innerText = "Password is not match";
+         
+     }
+
+       
 
     }
+    //-----------------------------------------------------------------------
+    // Send the target point to the server
+    //-----------------------------------------------------------------------
+
+
+    function AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl) {
+        var dataString = '{UserName:"' + userName + '",' + 'Password:"' + Password + '",' + 'FirstName:"' + firstName + '",' + 'LastName:"' + lastName + '",' + 'Age:' + age + ',' + 'City:"' + city + '",' + 'Email:"' + email + '",' + 'imageUrl:"' + imageUrl + '"}';
+       
+        $.ajax({ // ajax call starts
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/Adduser', // server side method
+            data: dataString,    // the parameters sent to the server
+            type: 'POST',
+            dataType: 'json', // Choosing a JSON datatype
+            contentType: 'application/json; charset = utf-8',
+            success: function (data) // Variable data contains the data we get from serverside
+            {
+                ans = $.parseJSON(data.d);
+                if (ans == 1) {
+                    window.location.assign("LogIn.htm");
+                }
+                else {
+                    document.getElementById("errorLbl").innerText = "register faild ";
+                }
+                
+            }, // end of success
+            error: function (e) {
+                alert("error in jason");
+            } // end of error
+        }) // end of ajax call
+    }
+
+
 
 </script>
 </html>
