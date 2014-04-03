@@ -85,7 +85,7 @@
             </div>
            
             <div data-role="fieldcontain">
-              <!--  <a href="home.htm">
+             <!--   <a href="home.htm">
                     <input type="submit" name="" value="Submit" data-theme="a" onclick="NewUser()" /></a>-->
                      <input type="submit" id="RegisBtn" onclick="NewUser()" value="Register">
             </div>
@@ -105,7 +105,7 @@
 <script type="text/javascript">
 
     function NewUser() {
-       
+        alert("NewUser");
         firstName = document.getElementById("firstNameTb").value;
         lastName = document.getElementById("lastNameTb").value;
         age = document.getElementById("ageTb").value;
@@ -118,7 +118,7 @@
         //      imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
         if (verifyPassword == Password) {
             AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl);
-           window.location.assign("LogIn.htm");
+        
 
      }
      else {
@@ -145,14 +145,15 @@
             dataType: 'json', // Choosing a JSON datatype
             contentType: 'application/json; charset = utf-8',
             success: function (data) // Variable data contains the data we get from serverside
-            {
-                ans = $.parseJSON(data.d);
-                if (ans == 1) {
-                    window.location.assign("LogIn.htm");
-                }
-                else {
-                    document.getElementById("errorLbl").innerText = "register faild ";
-                }
+            {  ans = $.parseJSON(data.d);
+               alert(ans);
+//                
+//                if (ans == 1) {
+//                    window.location.assign("LogIn.htm");
+//                }
+//                else {
+//                    document.getElementById("errorLbl").innerText = "register faild ";
+//                }
                 
             }, // end of success
             error: function (e) {

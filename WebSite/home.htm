@@ -16,7 +16,7 @@
             <h1>
               <img src="icons/logo.png" height="40px" />
             </h1>
-            <a href="LogIn.htm"   data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" >Log out</a>
+            <a   data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" onclick="GotoLogin()" >Log out</a>
            <!--  <input type="button" value="Create event" onclick="GotoMap()">-->
              <a   data-role="button" data-icon="plus" data-iconpos="right" onclick="GotoMap()" >Create event</a> 
         </div>
@@ -146,6 +146,11 @@
       
         window.location.assign("mapPage.htm");
     }
+    function GotoLogin() {
+
+        window.location.assign("LogIn.htm");
+    }
+    
 
     function CloseInfo()
     { infowindow2.close(map); }
