@@ -9,8 +9,8 @@
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
     <script src="http://maps.google.com/maps/api/js?sensor=false&language=he"></script>
 </head>
-<body>
-    <div data-role="page" id="page1">
+<body onload="start()">
+    <div data-role="page" id="pagemap">
         <div data-role="header" data-theme="b">
             <h1>
                 <img src="icons/logo.png" height="40px" />
@@ -23,17 +23,20 @@
                 <h2>
                     Are you sure you want to leave this page?</h2>
                 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
-                    No </a><a href="AddEvent.htm" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
+                    No </a><a href="home.htm" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">
                         Yes</a>
             </div>
             <article data-role="content">
                 <div>
-                    <table>
+                    <table
                         <tr>
-                            <td>
+                            <td colspan="2"> 
                                 <input type="text" value="" id="locationTB" placeholder="Insert an address" />
                             </td>
-                            <td style="padding: 0px 10px 0px 10px">
+                         
+                        </tr>
+                        <tr> 
+                          <td style="padding: 0px 10px 0px 10px">
                                 <input type="button" id="getPosition" class="myButton" value="Find" />
                             </td>
                             <td>
@@ -44,9 +47,9 @@
                 </div>
                 <div id="mapholder" style="height: 600px; width: 600px">
                 </div>
-                <a href="AddEvent.htm" data-role="button" data-icon="check" data-iconpos="right">Confirm
-                    Location</a>
-                <input type="button" id="ConfirmBn" value="Confirm Location" />
+         <!--     <!--  <input type="submit" data-inline="true" value="Submit"  onclick="GoBack()">-->
+            <!--     <a href="AddEvent.htm" data-role="button">confirm location</a>-->-->
+                <input type="button" value="Confirm location " onclick="GoBack()">
             </article>
         </div>
 </body>
@@ -69,9 +72,9 @@
         window.onload = start();
 
         function start() {
+
            
             showMap();
-             
             document.getElementById("getPosition").addEventListener("click", showTown);
             document.getElementById("getLocation").addEventListener("click", getLocation);
         }
@@ -110,37 +113,12 @@
        
 
 
-        function showLat() {
-            var lat = document.getElementById("latRange").value;
-            var long = document.getElementById("longRange").value;
-            LatValue.innerText = lat;
-            ShowPositionLatLong(lat, long);
-        }
+      
 
-        function showLong() {
-            var lat = document.getElementById("latRange").value;
-            var long = document.getElementById("longRange").value;
-            LongValue.innerText = long;
-            ShowPositionLatLong(lat, long);
-        }
-
-         //use in the ripple. need the var map definition inside the function!
-        function showPosition(position) {
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-            latlon = new google.maps.LatLng(lat, lon);
-           
-            var myOptions = {
-                center: latlon,
-                zoom: 14,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControl: false,
-                navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
-            };
-            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-            var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
-          
-        }
+       function GoBack()
+  {
+      window.location.assign("AddEvent.htm");
+  }
 
        
        function getLocation()    {
@@ -184,16 +162,7 @@
     
         }
 
-        //dont use in the ripple
-        function ShowPositionLatLong(lat, lon) {
-
-            latlon = new google.maps.LatLng(lat, lon);
-            map.setCenter(latlon);
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
-        }
-
+     
         function placeMarker(position, map, flag) {
 
             for (var i = 0; i < markers.length; i++) {
