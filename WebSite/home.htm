@@ -151,7 +151,7 @@
     { infowindow2.close(map); }
 
 
-    if (sessionStorage.FinalPositonS) {
+    if (sessionStorage.Email) {
         Email = sessionStorage.Email;
         
     }
@@ -171,6 +171,13 @@
             contentType: 'application/json; charset = utf-8',
             success: function (data) // Variable data contains the data we get from serverside
             {
+                ans = $.parseJSON(data.d);
+                if (ans == "Success") {
+                    alert("You jo");
+                }
+                else {
+                    alert("NOt GOOD");
+                }
 
             }, // end of success
             error: function (e) {

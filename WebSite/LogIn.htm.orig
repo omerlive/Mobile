@@ -70,18 +70,16 @@
             success: function (data) // Variable data contains the data we get from server side
             {
                 ans = $.parseJSON(data.d);
-                if (ans == "ok") {
-                    alert("ok");
-                    if (typeof (Storage) !== "undefined") {
-                        sessionStorage.Email = document.getElementById("emailTb").value;
-                    }
+                if (ans == ok) {
                     window.location.assign("home.htm");
                 }
                 else {
-                    document.getElementById("errorLbl").innerText = "Wrong Password ";
+                    document.getElementById("errorLbl").innerText = "Worng Password ";
                 }
                 // run on all the POIs and display them
-
+                if (typeof (Storage) !== "undefined") {
+                    sessionStorage.Email = document.getElementById("emailTb").value; ;
+                }
             }, // end of success
             error: function (e) {
                 alert("failed in getTarget :( " + e.responseText);
