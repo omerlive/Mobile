@@ -16,9 +16,9 @@
             <h1>
               <img src="icons/logo.png" height="40px" />
             </h1>
-            <a href="index.html"   data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" >Log out</a>
-             <input type="button" value="Create event" onclick="GotoMap()">
-           <!-- אם מעבירם דרך קישור    לא רואים תמפה צריך לעשות ריפרש <a href="mapPage.htm"  data-role="button" data-icon="plus" data-iconpos="right" >Create event</a>--> 
+            <a href="LogIn.htm"   data-role="button" data-icon="delete" data-iconpos="right" data-iconshadow"true" >Log out</a>
+           <!--  <input type="button" value="Create event" onclick="GotoMap()">-->
+             <a   data-role="button" data-icon="plus" data-iconpos="right" onclick="GotoMap()" >Create event</a> 
         </div>
         <article data-role="content">
 
@@ -66,7 +66,7 @@
     // get the getPOIList 
     //-----------------------------------------------------------------------
     function getPOIList() {
-        var dataString = '{ss:"sssd"}'; ;
+       
         $.ajax({ // ajax call starts
             url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/getEvents',   // server side method
             // parameters passed to the server
