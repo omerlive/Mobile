@@ -1,0 +1,134 @@
+﻿.screenshots
+{
+    width: 80%;
+    
+box-shadow: 0px 0px 2px 2px #000066;
+    
+}
+.project
+{
+    width: 90%;
+    
+box-shadow: 0px 0px 2px 2px #000066;
+    
+}
+.IMG
+{
+    height: 100%;
+    
+    position:fixed;
+   
+}
+
+
+.studentImage
+{
+    width: 70%;
+    height:inherit;
+    box-shadow: 10px 10px 10px 10px #888888;
+    border-radius:100px;
+    text-align:left;
+    
+}
+.imgggg
+{
+    height:90%;
+    width:90%;
+    text-align:center;
+    border-radius:30px;
+    box-shadow:  0px 0px 2px 2px  #888888;
+}
+
+
+body {
+    direction: rtl;
+    background-image: url('glyphish-icons/PNG icons/bluebeck.jpg');
+    background-repeat:repeat-y;
+    text-align:center;
+    
+    
+}
+p
+{
+    word-wrap:break-word;
+    text-align:right;
+     font-family:Narkisim;
+}
+
+h1
+{
+    text-align: center;
+     font-family:Narkisim;
+    text-shadow: 0px 0px 5px #3366CC;
+    direction: rtl;
+    
+}
+h4
+{
+    text-align: right;
+    font-family:Narkisim;
+}
+h3
+{
+    text-align: right;
+     font-family:Narkisim;
+}
+h5
+{
+    text-align: right;
+     font-family:Narkisim;
+}
+
+.ui-icon-myapp-email
+{
+    background-image: url("glyphish-icons/PNG icons/1385506141_people-y.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+.ui-icon-myapp-email1
+{
+    background-image: url("glyphish-icons/PNG icons/1385506304_computer.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+.ui-icon-myapp-email2
+{
+    background-image: url("glyphish-icons/PNG icons/1385506706_konqsidebar_mediaplayer.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+.ui-icon-myapp-email3
+{
+    background-image: url("glyphish-icons/PNG icons/1385507025_kcmdf.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+
+.ui-icon-myapp-home
+{
+    background-image: url("glyphish-icons/PNG icons/1385508212_kfm_home.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+
+.ui-icon-myapp-more
+{
+    background-image: url("glyphish-icons/PNG icons/1385589577_add-more.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+
+
+
+iframe
+{
+    width:100%;
+    height:300px;
+}
+    
+
+
+
+
+
+

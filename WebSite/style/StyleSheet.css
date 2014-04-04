@@ -39,3 +39,25 @@ a {text-decoration: none}
             font-family: Hobo Std;
             color:#6699FF;
         }
+        
+        
+.myButton
+{
+    height:35px;
+    width:100px;
+    -moz-box-shadow: 5px 5px 10px 0px #276873;
+    -webkit-box-shadow: 5px 5px 10px 0px #276873;
+    box-shadow: 5px 5px 10px 0px #276873;
+    background-color: #3a4f63;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    text-shadow: 3px 3px 0px #3d768a;
+}

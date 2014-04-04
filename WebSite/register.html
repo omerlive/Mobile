@@ -16,6 +16,7 @@
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
+           <a href="index.html" data-icon="home" onclick="GotoHome()"></a>
         </div>
         <div data-role="content">
             <div data-role="fieldcontain">
@@ -72,7 +73,9 @@
                 <label for="image">
                     Profile Image
                 </label>
-                <input type="file" name="image" id="image" accept="image/*" capture>
+                <!--<input type="file" name="image" id="image" accept="image/*" capture>-->
+                <input type="button" onclick="getPicture()"  id="picbtn" value="Take pic">
+
             </div>
             <div data-role="fieldcontain">
                 <input type="submit" id="RegisBtn" onclick="NewUser()" value="Register">
@@ -144,7 +147,46 @@
         }) // end of ajax call
     }
 
+    //pic func
 
+    function getPicture() {
+        navigator.camera.getPicture(uploadPhoto,
+                                        function (message) { alert('get picture failed'); },
+                                        { quality: 50,
+                                            destinationType: navigator.camera.DestinationType.FILE_URI,
+                                            sourceType: navigator.camera.PictureSourceType.CAMERA
+                                        }
+                                        ); // PhoneGap method for retrieving an image from the phone's camera
+
+    } // Get Picture
+
+    function uploadPhoto(imageURI) {
+        //   Load(); // Start the spinning "working" animation
+        var options = new FileUploadOptions(); // PhoneGap object to allow server upload
+        options.fileKey = "file";
+        options.fileName = document.getElementById("firstNameTb").value + document.getElementById("lastNameTb").value; // file name
+        options.mimeType = "image/jpeg"; // file type
+        var params = {}; // Optional parameters
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params; // add parameters to the FileUploadOptions object
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("http://proj.ruppin.ac.il/mobile/tar5/pic/ReturnValue.ashx"), win, fail, options); // Upload
+    } // Upload Photo
+
+    function win(r) {
+        path = r.response;
+        img = document.getElementById("firstNameTb");
+        img.src = "http://proj.ruppin.ac.il/mobile/tar5/pic/" + document.getElementById("firstNameTb").value + ".jpg";
+        
+        // UnLoad(); // Stop "working" animation
+    } // win (upload success)
+
+    function fail(error) {
+        alert("An error has occurred: Code = " + error.code);
+    } 
 
 </script>
 </html>

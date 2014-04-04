@@ -17,8 +17,10 @@
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
-       <a data-role="button" data-icon="plus" onclick="GotoLogin()">Login</a>
-           
+            <a data-role="button" data-icon="plus" onclick="GotoLogin()">
+                <label id="LogInLbl">
+                    LogIn</label>
+            </a>
         </div>
         <div data-role="content">
             <div id="mapholder" style="height: 300px">
@@ -40,7 +42,9 @@
     var eventNum;
 
     function initialize() {
-    
+        checkLogIn();
+
+
         // center the map in Ruppin
         var ruppinPos = new Object();
         ruppinPos.lat = 32.082594018608;
@@ -55,7 +59,10 @@
 
         getPOIList();
         document.addEventListener("deviceready", onDeviceReady, false);
-         $.mobile.page.prototype.options.domCache = true;
+
+
+
+        $.mobile.page.prototype.options.domCache = true;
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -101,8 +108,8 @@
 
         });
 
-        var contentString = '<div id="content" height:190px" > <img src ="' + poiPoint.ImageUrl + '" style="width: 20px"/></br><h1>' + poiPoint.Description + '</h1><div id="bodyContent" style="color:Black">'
-              + '<h4 style="color:Blue" >Age Range:</h4>' + poiPoint.MinAge + '-' + poiPoint.MaxAge +  '<p><h4 style="color:Blue" >Address:</h4> ' + poiPoint.Address + '</p>' + '<p><h4 style="color:Blue" >Date & Time:</h4> ' + poiPoint.DateTimeStr + '</p>' + '</div><input type="button" class="myButton" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')" id="btnJoinMap" value="Join"/><p>' + '</div>';
+        var contentString = '<div id="content" style="height:190px"><h1> ' + poiPoint.Description + '&nbsp<img src ="' + poiPoint.ImageUrl + '" style="width: 20px"/></h1><div id="bodyContent" style="color:Black">'
+              + '<h4 style="color:Blue" >Age Range:</h4>' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '<p><h4 style="color:Blue" >Address:</h4> ' + poiPoint.Address + '</p>' + '<p><h4 style="color:Blue" >Date & Time:</h4> ' + poiPoint.DateTimeStr + '</p>' + '</div><input type="button" class="myButton" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')" id="btnJoinMap" value="Join"/><p>' + '</br></div>';
 
         var infowindow1 = new google.maps.InfoWindow({
             content: contentString
@@ -122,8 +129,7 @@
         var pos = new google.maps.LatLng(EventPos.lat, EventPos.long);
 
         eventNum = num;
-        var contster = '<div style="height:100px" id="content" ><h5> Are you sure you want to join? <h5/> <input type="button" class="myButton" onclick="JoinEventJson()" id="btnYes" value="Yes"/> <input type="button" class="myButton" onclick="CloseInfo()" id="btnNo" value="No"/>';
-
+        contster = '<div style="height:100px" id="content" ><h3> Are you sure you want to join? <h3/> <input type="button" style="width:60px" class="myButton" onclick="JoinEventJson()" id="btnYes" value="Yes"/> <input type="button" style="width:60px" class="myButton" onclick="CloseInfo()" id="btnNo" value="No"/>';
         infowindow2 = new google.maps.InfoWindow({
             content: contster,
             position: pos
@@ -154,37 +160,44 @@
 
         if (sessionStorage.Email) {
             Email = sessionStorage.Email;
-           
-        var dataString = '{Email:"' + Email + '",' + 'EventNum:"' + eventNum + '"}';
 
-        $.ajax({ // ajax call starts
-            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/UserToEvent',   // server side method
-            data: dataString,    // the parameters sent to the server
-            type: 'POST',
-            dataType: 'json', // Choosing a JSON datatype
-            contentType: 'application/json; charset = utf-8',
-            success: function (data) // Variable data contains the data we get from serverside
-            {
-                ans = $.parseJSON(data.d);
-                if (ans == "Success") {
-                    alert("You have joined to the event! :)");
-                }
-                else {
-                    alert("This event is already full.");
-                }
+            var dataString = '{Email:"' + Email + '",' + 'EventNum:"' + eventNum + '"}';
 
-            }, // end of success
-            error: function (e) {
+            $.ajax({ // ajax call starts
+                url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/UserToEvent',   // server side method
+                data: dataString,    // the parameters sent to the server
+                type: 'POST',
+                dataType: 'json', // Choosing a JSON datatype
+                contentType: 'application/json; charset = utf-8',
+                success: function (data) // Variable data contains the data we get from serverside
+                {
+                    ans = $.parseJSON(data.d);
+                    if (ans == "Success") {
+                        alert("You have joined to this event! :)");
+                    }
+                    else {
+                        alert("This event is already full.");
+                    }
 
-            } // end of error
-        }) // end of ajax call
+                }, // end of success
+                error: function (e) {
+
+                } // end of error
+            }) // end of ajax call
+        }
+        else {
+            alert("you have to login");
+        }
+
     }
-    else {
-        alert("you have to login");
-    }
-    
-}
 
+
+    function checkLogIn() {
+
+        if ((sessionStorage.Email)) {
+            document.getElementById("LogInLbl").innerText = "Log Out";
+        }
+    }
         
 </script>
 </html>

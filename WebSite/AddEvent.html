@@ -28,7 +28,7 @@
         <div data-role="content">
             <div data-role="fieldcontain">
                 <fieldset class="ui-field-contain">
-                    <label for="day">
+                    <label for="day" style="font-weight:bold">
                         Category:</label>
                     <select name="Category" id="categoryDdl" data-native-menu="false">
                         <option value="1">Soccer</option>
@@ -42,24 +42,24 @@
                 </fieldset>
             </div>
             <div data-role="fieldcontain">
-                <label for="flip1">
+                <label style="font-weight:bold" for="flip1">
                     Num of Partic:</label>
                 <input type="tel" pattern="[0-9]*" name="NOP" value="5" id="nopTb" />
             </div>
             <div data-role="fieldcontain">
-                <label for="date">
+                <label style="font-weight:bold" for="date">
                     Date:</label>
                 <input type="date" name="date" id="dateTb">
             </div>
             <div data-role="fieldcontain">
-                <label for="time">
+                <label style="font-weight:bold" for="time">
                     Time:</label>
                 <input type="time" name="time" id="timeTb">
             </div>
             <div>
                 <input type="button" value="Choose location strong" onclick="GotoMap()">
-                <a href="mapPage.htm" data-role="button">Choose location</a>
-                <label style="font-weight:bold">Address: </label> <label id="AddressLBL" > </label>
+                <a href="mapPage.html" data-role="button">Choose location</a>
+                <label style="font-weight:bold">Address: </label> <label style="font-weight:bold" id="AddressLBL" > </label>
             </div>
             <div data-role="fieldcontain">
                 <div id="rangedvaldiv">
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div data-role="fieldcontain">
-                <label for="flip1">
+                <label for="flip1" style="font-weight:bold">
                     Event type:
                 </label>
                 <select name="flip1" id="typeFlip" data-role="slider">
@@ -78,7 +78,7 @@
                 </select>
             </div>
             <fieldset data-role="controlgroup" name="frequecyTb" data-type="horizontal" id="frequecyTb">
-                <legend>Frequecy:</legend>
+                <legend style="font-weight:bold" >Frequecy:</legend>
                 <label for="once">
                     Once</label>
                 <input type="radio" name="Frequecy" id="once" value="1" checked>
@@ -90,7 +90,7 @@
                 <input type="radio" name="Frequecy" id="Every Month" value="3" selected="true">
             </fieldset>
             <div data-role="fieldcontain">
-                <label for="fname" class="ui-hidden-accessible">
+                <label for="fname" style="font-weight:bold" class="ui-hidden-accessible">
                     Comments</label>
                 <input type="text" name="comments" id="commentsTb" placeholder="Comments...">
             </div>
