@@ -77,9 +77,6 @@
         }) // end of ajax call
     }
 
-
-
-
     function buildListItem(poiPoint) {
         var str = "";
         str += '<li><a href="#" data-icon="home" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
@@ -97,7 +94,7 @@
 
     function JoinEvent(num, lat, lng) {
         
-        var r = confirm("Are you sure you want to join?");
+        var r = confirm("Join event?");
         if (r == true) {
             eventNum = num;
             JoinEventJson();
@@ -123,7 +120,7 @@
                 {
                     ans = $.parseJSON(data.d);
                     if (ans == "Success") {
-                        alert("You have joined to this event! :)");
+                        alert("You have joined the event! :)");
                     }
                     else {
                         alert("This event is already full.");
@@ -136,7 +133,7 @@
             }) // end of ajax call
         }
         else {
-            alert("you have to login");
+            alert("You have to login in order to join...");
         }
 
     }

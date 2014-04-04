@@ -28,8 +28,8 @@
         <div data-role="content">
             <div data-role="fieldcontain">
                 <fieldset class="ui-field-contain">
-                    <label for="day" style="font-weight: bold">
-                        Category:</label>
+                    <!--<label for="day" style="font-weight: bold">
+                        Category:</label>-->
                     <select name="Category" id="categoryDdl" data-native-menu="false">
                         <option value="1">Soccer</option>
                         <option value="2">Basketball</option>
@@ -42,28 +42,29 @@
                 </fieldset>
             </div>
             <div data-role="fieldcontain">
-                <label style="font-weight: bold" for="flip1">
-                    Num of Partic:</label>
-                <input type="tel" pattern="[0-9]*" name="NOP" value="5" id="nopTb" />
+                <!--<label style="font-weight: bold" for="flip1">
+                    Num of Partic:</label>-->
+                <input type="number" pattern="[0-9]*" name="NOP" placeholder="Number of Participants..." id="nopTb" />
             </div>
             <div data-role="fieldcontain">
                 <label style="font-weight: bold" for="date">
                     Date:</label>
-                <input type="date" name="date" id="dateTb">
+                <input type="date" name="date" id="dateTb" placeholder="Date...">
             </div>
             <div data-role="fieldcontain">
                 <label style="font-weight: bold" for="time">
                     Time:</label>
-                <input type="time" name="time" id="timeTb">
+                <input type="time" name="time" id="timeTb" placeholder="HH:MM">
             </div>
             <div>
-                <input type="button" value="Choose location strong" onclick="GotoMap()">
-                <a href="mapPage.html" data-role="button">Choose location</a>
                 <label style="font-weight: bold">
                     Address:
                 </label>
-                <label style="font-weight: bold" id="AddressLBL">
+                <label style="font-weight: bold; color: #00CC66;" id="AddressLBL">
                 </label>
+                <br />
+                <input type="button" value="Change location strong" onclick="GotoMap()">
+                <a href="mapPage.html" data-role="button">Change location</a>
             </div>
             <!-- <div data-role="fieldcontain">    -------הטווח הקודם -------
                 <div id="rangedvaldiv">
@@ -74,10 +75,10 @@
             </div>-->
             <div data-role="fieldcontain">
                 <label style="font-weight: bold" for="flip1">
-                    Range Value:</label>
+                    Age Range:</label>
                 <form>
                 <div data-role="rangeslider">
-                   <!-- <label for="range-1a">
+                    <!-- <label for="range-1a">
                         Rangeslider:</label>-->
                     <input name="range-1a" id="range-1a" min="0" max="100" value="20" type="range">
                     <!--<label for="range-1b">
@@ -87,18 +88,17 @@
                 </form>
             </div>
             <div data-role="fieldcontain">
-                
-                <label style="font-weight: bold" for="flip1">
-                    Event type: 
+               <!-- <label style="font-weight: bold" for="flip1">
+                    Event type:
                     <br />
-                </label>
-                <br />
+                </label>-->
+               <!-- <br />-->
                 <select name="flip1" id="typeFlip" data-role="slider">
                     <option value="false">Public</option>
                     <option value="true">Private</option>
                 </select>
             </div>
-            <fieldset data-role="controlgroup" name="frequecyTb" data-type="horizontal" id="frequecyTb">
+            <fieldset data-role="controlgroup" name="frequecyTb" data-type="horizontal" id="frequecyTb" data-mini="true">
                 <legend style="font-weight: bold">Frequecy:</legend>
                 <label for="once">
                     Once</label>
@@ -116,14 +116,14 @@
                 <input type="text" name="comments" id="commentsTb" placeholder="Comments...">
             </div>
             <div>
-                <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Confirm & Publish">
+                <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Submit">
             </div>
         </div>
-        <div data-theme="b" data-role="footer" data-position="fixed">
+        <div data-theme="b" data-role="footer" data-position="fixed" data-fullscreen="true">
             <nav data-role="navbar" data-divider-theme="c">
                 <ul>
                     <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a href="#" data-icon="info" onclick="GotoTable()">Table view</a></li>
+                    <li><a href="#" data-icon="info" onclick="GotoTable()">Table View</a></li>
                 </ul>
             </nav>
         </div>
@@ -151,7 +151,7 @@
         category = document.getElementById("categoryDdl").value;
         type = document.getElementById("typeFlip").value;
         frequecy = $('input[name="Frequecy"]:checked').val();
-       
+
         minAge = document.getElementById("range-1a").value;
         maxAge = document.getElementById("range-1b").value;
         comments = document.getElementById("commentsTb").value;
