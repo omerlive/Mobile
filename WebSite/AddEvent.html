@@ -28,7 +28,7 @@
         <div data-role="content">
             <div data-role="fieldcontain">
                 <fieldset class="ui-field-contain">
-                    <label for="day" style="font-weight:bold">
+                    <label for="day" style="font-weight: bold">
                         Category:</label>
                     <select name="Category" id="categoryDdl" data-native-menu="false">
                         <option value="1">Soccer</option>
@@ -42,43 +42,64 @@
                 </fieldset>
             </div>
             <div data-role="fieldcontain">
-                <label style="font-weight:bold" for="flip1">
+                <label style="font-weight: bold" for="flip1">
                     Num of Partic:</label>
                 <input type="tel" pattern="[0-9]*" name="NOP" value="5" id="nopTb" />
             </div>
             <div data-role="fieldcontain">
-                <label style="font-weight:bold" for="date">
+                <label style="font-weight: bold" for="date">
                     Date:</label>
                 <input type="date" name="date" id="dateTb">
             </div>
             <div data-role="fieldcontain">
-                <label style="font-weight:bold" for="time">
+                <label style="font-weight: bold" for="time">
                     Time:</label>
                 <input type="time" name="time" id="timeTb">
             </div>
             <div>
                 <input type="button" value="Choose location strong" onclick="GotoMap()">
                 <a href="mapPage.html" data-role="button">Choose location</a>
-                <label style="font-weight:bold">Address: </label> <label style="font-weight:bold" id="AddressLBL" > </label>
+                <label style="font-weight: bold">
+                    Address:
+                </label>
+                <label style="font-weight: bold" id="AddressLBL">
+                </label>
             </div>
-            <div data-role="fieldcontain">
+            <!-- <div data-role="fieldcontain">    -------הטווח הקודם -------
                 <div id="rangedvaldiv">
                     Range Value: <span id="rangeval">25 - 35</span>
                 </div>
                 <div id="rangeslider">
                 </div>
+            </div>-->
+            <div data-role="fieldcontain">
+                <label style="font-weight: bold" for="flip1">
+                    Range Value:</label>
+                <form>
+                <div data-role="rangeslider">
+                   <!-- <label for="range-1a">
+                        Rangeslider:</label>-->
+                    <input name="range-1a" id="range-1a" min="0" max="100" value="20" type="range">
+                    <!--<label for="range-1b">
+                        Rangeslider:</label>-->
+                    <input name="range-1b" id="range-1b" min="0" max="100" value="40" type="range">
+                </div>
+                </form>
             </div>
             <div data-role="fieldcontain">
-                <label for="flip1" style="font-weight:bold">
-                    Event type:
+                
+                <label style="font-weight: bold" for="flip1">
+                    Event type: 
+                    <br />
                 </label>
+                <br />
                 <select name="flip1" id="typeFlip" data-role="slider">
                     <option value="false">Public</option>
                     <option value="true">Private</option>
                 </select>
             </div>
             <fieldset data-role="controlgroup" name="frequecyTb" data-type="horizontal" id="frequecyTb">
-                <legend style="font-weight:bold" >Frequecy:</legend>
+                <legend style="font-weight: bold">Frequecy:</legend>
                 <label for="once">
                     Once</label>
                 <input type="radio" name="Frequecy" id="once" value="1" checked>
@@ -90,7 +111,7 @@
                 <input type="radio" name="Frequecy" id="Every Month" value="3" selected="true">
             </fieldset>
             <div data-role="fieldcontain">
-                <label for="fname" style="font-weight:bold" class="ui-hidden-accessible">
+                <label for="fname" style="font-weight: bold" class="ui-hidden-accessible">
                     Comments</label>
                 <input type="text" name="comments" id="commentsTb" placeholder="Comments...">
             </div>
@@ -102,8 +123,7 @@
             <nav data-role="navbar" data-divider-theme="c">
                 <ul>
                     <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a href="#"  data-icon="info" onclick="GotoTable()"> Table view</a></li>
-                  
+                    <li><a href="#" data-icon="info" onclick="GotoTable()">Table view</a></li>
                 </ul>
             </nav>
         </div>
@@ -114,7 +134,7 @@
     window.onload = LoagPage();
 
     function LoagPage() {
-       
+
 
 
         if (sessionStorage.AddressSe) {
@@ -131,10 +151,9 @@
         category = document.getElementById("categoryDdl").value;
         type = document.getElementById("typeFlip").value;
         frequecy = $('input[name="Frequecy"]:checked').val();
-        ageRange = $('#rangeval').text();
-        arrtemp = ageRange.split("-");
-        minAge = arrtemp[0];
-        maxAge = arrtemp[1];
+       
+        minAge = document.getElementById("range-1a").value;
+        maxAge = document.getElementById("range-1b").value;
         comments = document.getElementById("commentsTb").value;
         time = document.getElementById("dateTb").value + " " + document.getElementById("timeTb").value;
 
