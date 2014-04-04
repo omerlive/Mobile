@@ -29,8 +29,8 @@
         <div data-theme="b" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="b">
                 <ul>
-                    <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a href="#" data-icon="info">Events</a></li>
+                    <li><a href="#" data-icon="home" onclick="GotoHome()">Home</a></li>
+                    <li><a href="#"  data-icon="info" onclick="GotoTable()"> Table view</a></li>
                     <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
                 </ul>
             </nav>
@@ -144,9 +144,14 @@
 
         window.location.assign("mapPage.html");
     }
+    
     function GotoLogin() {
 
         window.location.assign("LogIn.html");
+    }
+    function GotoTable() {
+
+        window.location.assign("Table.html");
     }
 
 
