@@ -1,39 +1,43 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
-    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
-    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
-    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
-    <script src="js/MovieReplace.js" type="text/javascript"></script>
-    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>-->
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <!--<script src="js/MovieReplace.js" type="text/javascript"></script>-->
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    
 </head>
 <body>
     <!-- This is the skeleton for the main page -->
     <div data-role="page" id="projectsPage">
-        <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c">
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
-            <a data-role="button" data-icon="plus" onclick="GotoLogin()">
+          <a data-role="button" data-icon="gear" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px">
                 <label id="LogInLbl">
-                    LogIn</label>
+                   Log in</label>
             </a>
         </div>
         <div data-role="content">
             <!--  <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
               </ul>-->
 
-            <div data-role="collapsible-set" data-theme="b" id="projectsListView" style="text-align: center"
+            <div data-role="collapsible-set" data-theme="a" id="projectsListView" style="text-align: center"
                 data-inset="true" data-filter="true">
             </div> 
          
         </div>
-        <div data-theme="b" data-role="footer" data-position="fixed">
-            <nav data-role="navbar" data-divider-theme="b">
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <nav data-role="navbar" data-divider-theme="a">
                 <ul>
                     <li><a data-role="button" data-icon="home" onclick="GotoHome()">Home</a></li>
                     <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
