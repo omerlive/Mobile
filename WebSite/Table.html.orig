@@ -31,8 +31,13 @@
             <!--  <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
               </ul>-->
 
+<<<<<<< HEAD
             <div data-role="collapsible-set" data-theme="b" id="projectsListView" data-filter="true" style="text-align: center"
                  >
+=======
+            <div data-role="collapsible-set" data-theme="a" id="projectsListView" style="text-align: center"
+                " data-filter="true">
+>>>>>>> 0a895ea42f4644853b9abc4b0056fd66c46b0815
             </div> 
          
         </div>
@@ -91,12 +96,11 @@
 
         var strT = "";
         strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a" data-iconpos="right"  >';
-        strT += "'<p><h5><img src = '" + poiPoint.ImageUrl + "'style='width: 40px' />";
-        strT +=  poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h5>';
-        strT += '<p><h2>' + poiPoint.Description + '<h2><p>';
-        strT += '<p><h3> Number of partic: ' + poiPoint.NumOfParti + '</h3></p>';
-        strT += '<p><h3>  Age range: ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h3></p>';
-        strT += '<p><h3> Comments: ' + poiPoint.Comments + '</h3></p>';
+        strT += "<h5><img src = '" + poiPoint.ImageUrl + "'style='width: 40px' />";
+        strT += poiPoint.DateTimeStr + ' ' + poiPoint.Address + '</h5>';
+        strT += '<p><h5> Number of partic: ' + poiPoint.NumOfParti + '</h5></p>';
+        strT += '<p><h5>  Age range" ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h5></p>';
+        strT += '<p><h5> Comments"' + poiPoint.Comments + '</h5></p>';
         strT += '<input type="button" data-inline="true"  class="myButton" data-icon="plus" value="join" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
         strT += '</div>';
 
