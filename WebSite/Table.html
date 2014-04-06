@@ -14,9 +14,9 @@
 <body>
     <!-- This is the skeleton for the main page -->
     <div data-role="page" id="projectsPage">
-         <div data-role="header" data-theme="b">
+         <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
             <h1>
-                <img src="icons/logo.png" height="50px" />
+                <img src="icons/logo.png" height="50px"  />
             </h1>
             <a data-role="button" data-icon="plus" onclick="GotoLogin()">
                 <label id="LogInLbl">
@@ -33,8 +33,7 @@
             <div data-theme="b" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="b">
                 <ul>
-                    <li><a href="#" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a href="#"  data-icon="info" onclick="GotoTable()"> Table view</a></li>
+                    <li><a data-role="button" data-icon="home" onclick="GotoHome()">Home</a></li>
                     <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
                 </ul>
             </nav>
@@ -53,7 +52,7 @@
     function getPOIList() {
 
         $.ajax({ // ajax call starts
-            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmxWebService.asmx/getEvents',   // server side method
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/getEvents',   // server side method
             // parameters passed to the server
             type: 'POST',
             dataType: 'json', // Choosing a JSON datatype
@@ -79,10 +78,10 @@
 
     function buildListItem(poiPoint) {
         var str = "";
-        str += '<li><a href="#" data-icon="home" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
-        str += "<img src = '" + poiPoint.ImageUrl + "'  style='width: 80px' styleclass = 'imgggg'  /><h1>" + poiPoint.Description + "</h1></p>";
-        str += '<p><h1>' + poiPoint.Address + '</h1></p>';
-        str += "<h4>" + poiPoint.DateTimeStr + "</h4>";
+        str += '<li><a href="#" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
+        str += "<img src = '" + poiPoint.ImageUrl + "'style='width: 50px' 'vertical-align: middle'/>";
+        str += '<h4>' + poiPoint.Address + '</h4>';
+        str += '<h4>' + poiPoint.DateTimeStr + '</h4>';
         str += "</a></li>";
         return str;
     }
@@ -91,6 +90,17 @@
 
         window.location.assign("LogIn.html");
     }
+
+    function GotoHome() {
+
+        window.location.assign("index.html");
+    }
+
+    function GotoMap() {
+
+        window.location.assign("mapPage.html");
+    }
+
 
     function JoinEvent(num, lat, lng) {
         

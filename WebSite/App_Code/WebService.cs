@@ -137,7 +137,7 @@ public class WebService : System.Web.Services.WebService
         u.UserPassword = Password;
         u.Email = Email;
         JavaScriptSerializer js = new JavaScriptSerializer();
-        string jsonString = js.Serialize("Worng Email or Password ");
+        string jsonString = js.Serialize("Wrong Email or Password ");
         try
         {
             DataTable dt = u.CheckPass();
@@ -151,7 +151,7 @@ public class WebService : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-            jsonString = js.Serialize("error in treasure.Login --- " + ex.Message);
+            jsonString = js.Serialize("Error in: " + ex.Message);
         }
         return jsonString;
     }
@@ -181,7 +181,7 @@ public class WebService : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-            jsonString = js.Serialize("error in treasure.Login --- " + ex.Message);
+            jsonString = js.Serialize("Error in: " + ex.Message);
         }
 
         return jsonString;
