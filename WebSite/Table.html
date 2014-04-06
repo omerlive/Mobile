@@ -86,7 +86,7 @@
     function buildListItem(poiPoint) {
 
         var strT = "";
-        strT += '<div data-role="collapsible"  data-mini="true data-content-theme="b" data-inset="false"  >';
+        strT += '<div data-role="collapsible"  data-mini="true" data-inset="false" data-content-theme="a"  >';
         strT += "<h5><img src = '" + poiPoint.ImageUrl + "'style='width: 40px' />";
         strT += poiPoint.DateTimeStr + ' ' + poiPoint.Address + '</h5>';
         strT += '<p><h5> Number of partic: ' + poiPoint.NumOfParti + '</h5></p>';
@@ -96,7 +96,6 @@
         strT += '</div>';
 
         return strT;
-
     }
 
     function GotoLogin() {
