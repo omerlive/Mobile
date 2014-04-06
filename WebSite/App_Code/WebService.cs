@@ -144,7 +144,13 @@ public class WebService : System.Web.Services.WebService
             if (dt.Rows.Count != 0)
             {
                 if (dt.Rows[0]["UserPassword"].ToString() == u.UserPassword)
-                { jsonString = js.Serialize("ok"); }   
+                {
+                    User U1 = new User();
+                    U1.Fname = dt.Rows[0]["Fname"].ToString();
+                    U1.Email = dt.Rows[0]["Email"].ToString();
+                    U1.UserName = dt.Rows[0]["UserName"].ToString();
+                    jsonString = js.Serialize(U1);
+                }   
             }
            
           

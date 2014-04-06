@@ -27,8 +27,8 @@
             <!--  <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
               </ul>-->
 
-            <div data-role="collapsible-set" data-theme="b" id="projectsListView" style="text-align: center"
-                " data-filter="true">
+            <div data-role="collapsible-set" data-theme="b" id="projectsListView" data-filter="true" style="text-align: center"
+                 >
             </div> 
          
         </div>
@@ -86,7 +86,7 @@
     function buildListItem(poiPoint) {
 
         var strT = "";
-        strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a"  >';
+        strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a" data-iconpos="right"  >';
         strT += "<h5><img src = '" + poiPoint.ImageUrl + "'style='width: 40px' />";
         strT += poiPoint.DateTimeStr + ' ' + poiPoint.Address + '</h5>';
         strT += '<p><h5> Number of partic: ' + poiPoint.NumOfParti + '</h5></p>';
