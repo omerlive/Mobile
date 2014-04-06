@@ -27,6 +27,7 @@
                     First Name:
                 </label>
                 <input type="text" name="firstName" value="" id="firstNameTb" data-clear-btn="true" />
+                <br />
                 <label id="firstNameValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -35,6 +36,7 @@
                     Last Name:
                 </label>
                 <input type="text" name="lastName" value="" id="lastNameTb" data-clear-btn="true" />
+                <br />
                 <label id="lastNameTbValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -43,6 +45,7 @@
                     Age:
                 </label>
                 <input min="7" max="120" type="range" name="age" value="24" id="ageTb" />
+                <br />
                 <label id="ageTbTbValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -51,6 +54,7 @@
                     City:
                 </label>
                 <input type="text" name="City" value="" id="cityTb" data-clear-btn="true" />
+                <br />
                 <label id="cityTbValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -59,6 +63,7 @@
                     User Name:
                 </label>
                 <input type="text" name="UserName" value="" id="userNameTb" data-clear-btn="true" />
+                <br />
                 <label id="userNameValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -67,6 +72,7 @@
                     Email:
                 </label>
                 <input type="email" name="Email" value="" id="emailTb" data-clear-btn="true" />
+                <br />
                 <label id="emailValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -75,6 +81,7 @@
                     Password
                 </label>
                 <input type="password" name="Password" value="" id="PasswordTb" data-clear-btn="true" />
+                <br />
                 <label id="PasswordTbValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
@@ -84,8 +91,8 @@
                 </label>
                 <input type="password" name="VerifyPassword" value="" id="verifyPasswordTb" data-clear-btn="true" />
                 <label id="errorLbl" style="color: #FF3300">
-                    <label id="verifyPasswordTbValidatorLbl" style="color: #FF3300">
-                    </label>
+                </label>
+                <label id="verifyPasswordTbValidatorLbl" style="color: #FF3300">
                 </label>
             </div>
             <div data-role="fieldcontain">
@@ -121,9 +128,10 @@
 
     function NewUser() {
 
-        var isvalid = val
-        if (vlidddd) {
-        
+        var isvalid = validateForm();
+
+        if (isvalid) {
+
             firstName = document.getElementById("firstNameTb").value;
             lastName = document.getElementById("lastNameTb").value;
             age = document.getElementById("ageTb").value;
@@ -132,7 +140,8 @@
             email = document.getElementById("emailTb").value;
             Password = document.getElementById("PasswordTb").value;
             verifyPassword = document.getElementById("verifyPasswordTb").value;
-            imageUrl = "http://proj.ruppin.ac.il/mobile/tar5/pic/" + email + ".jpg";
+//            imageUrl = "";
+            imageUrl = userName + ".jpg";
             //imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
             AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl);
         }
@@ -141,19 +150,17 @@
     function validateForm() {
         var valid = true;
         if (document.getElementById("firstNameTb").value == "") {
-            document.getElementById("firstNameValidatorLbl").innerText += "first name is required"
+            document.getElementById("firstNameValidatorLbl").innerText += "First name is required"
             valid = false;
         }
 
         if (document.getElementById("lastNameTb").value == "") {
-            document.getElementById("lastNameTbValidatorLbl").innerText += "last name is required"
+            document.getElementById("lastNameTbValidatorLbl").innerText += "Last name is required"
             valid = false;
         }
 
-
-
         if (document.getElementById("ageTb").value == "") {
-            document.getElementById("ageTbTbValidatorLbl").innerText += "age is required"
+            document.getElementById("ageTbTbValidatorLbl").innerText += "Age is required"
             valid = false;
         }
 
@@ -164,22 +171,22 @@
         }
 
         if (document.getElementById("userNameTb").value == "") {
-            document.getElementById("userNameValidatorLbl").innerText += "userName is required"
+            document.getElementById("userNameValidatorLbl").innerText += "User name is required"
             valid = false;
         }
 
         if (document.getElementById("emailTb").value == "") {
-            document.getElementById("emailValidatorLbl").innerText += "email is required"
+            document.getElementById("emailValidatorLbl").innerText += "Email is required"
             valid = false;
         }
 
         if (document.getElementById("PasswordTb").value == "") {
-            document.getElementById("PasswordTbValidatorLbl").innerText += "Password  is required"
+            document.getElementById("PasswordTbValidatorLbl").innerText += "Password is required"
             valid = false;
         }
 
         if (document.getElementById("verifyPasswordTb").value == "") {
-            document.getElementById("verifyPasswordTbValidatorLbl").innerText += "verify Password  is required"
+            document.getElementById("verifyPasswordTbValidatorLbl").innerText += "Verify Password is required"
             valid = false;
         }
 
@@ -207,8 +214,6 @@
             success: function (data) // Variable data contains the data we get from serverside
             {
                 ans = $.parseJSON(data.d);
-
-
                 if (ans == 1) {
                     window.location.assign("LogIn.html");
                 }
@@ -238,10 +243,10 @@
     } // Get Picture
 
     function uploadPhoto(imageURI) {
-      
+
         var options = new FileUploadOptions(); // PhoneGap object to allow server upload
         options.fileKey = "file";
-        options.fileName = document.getElementById("firstNameTb").value + document.getElementById("lastNameTb").value; // file name
+        options.fileName = document.getElementById("userNameTb").value;  // file name
         options.mimeType = "image/jpeg"; // file type
         var params = {}; // Optional parameters
         params.value1 = "test";
@@ -255,10 +260,10 @@
 
     function win(r) {
         path = r.response;
-        img = document.getElementById("firstNameTb");
-        img.src = "http://proj.ruppin.ac.il/mobile/tar5/pic/" + document.getElementById("emailTb").value + ".jpg";
+        img = document.getElementById("userNameTb");
+        img.src = "http://proj.ruppin.ac.il/mobile/tar5/pic/" + document.getElementById("userNameTb").value + ".jpg";
+        alert(img.src);
 
-        
     } // win (upload success)
 
     function fail(error) {
