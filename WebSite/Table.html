@@ -1,36 +1,38 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
     <script src="js/MovieReplace.js" type="text/javascript"></script>
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
     <title></title>
 </head>
 <body>
     <!-- This is the skeleton for the main page -->
     <div data-role="page" id="projectsPage">
-         <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+        <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
             <h1>
-                <img src="icons/logo.png" height="50px"  />
+                <img src="icons/logo.png" height="50px" />
             </h1>
             <a data-role="button" data-icon="plus" onclick="GotoLogin()">
                 <label id="LogInLbl">
                     LogIn</label>
             </a>
         </div>
-        <!-- /header -->
         <div data-role="content">
-            <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
-            </ul>
-            
+            <!--  <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
+              </ul>-->
+
+            <div data-role="collapsible-set" data-theme="b" id="projectsListView" style="text-align: center"
+                data-inset="true" data-filter="true">
+            </div> 
+         
         </div>
-        <!-- /content -->
-            <div data-theme="b" data-role="footer" data-position="fixed">
+        <div data-theme="b" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="b">
                 <ul>
                     <li><a data-role="button" data-icon="home" onclick="GotoHome()">Home</a></li>
@@ -41,10 +43,10 @@
     </div>
     <!-- /page -->
 </body>
- <script type="text/javascript">
+<script type="text/javascript">
 
-     window.onload = getPOIList();
-     var eventNum;
+    window.onload = getPOIList();
+    var eventNum;
 
     //-----------------------------------------------------------------------
     // get the events 
@@ -60,15 +62,17 @@
             success: function (data) // Variable data contains the data we get from server side
             {
                 poiList = $.parseJSON(data.d);
-                str = "";
+                // str = '<div data-role="collapsible-set" data-theme="a">';
+                str = '';
                 // run on all the POIs and display them
                 for (i = 0; i < poiList.length; i++) {
-                    str += buildListItem(poiList[i]); // add item to the list in the main events page
 
+                    str += buildListItem(poiList[i]); // add item to the list in the main events page
                 }
+
                 $("#projectsListView").append(str);
-                $("#projectsListView").listview("refresh");
-               
+                $("#projectsListView").collapsibleset('refresh');
+
             }, // end of success
             error: function (e) {
                 alert("failed in getTarget :( " + e.responseText);
@@ -76,14 +80,24 @@
         }) // end of ajax call
     }
 
+     
+
+   
     function buildListItem(poiPoint) {
-        var str = "";
-        str += '<li><a href="#" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
-        str += "<img src = '" + poiPoint.ImageUrl + "'style='width: 50px' 'vertical-align: middle'/>";
-        str += '<h4>' + poiPoint.Address + '</h4>';
-        str += '<h4>' + poiPoint.DateTimeStr + '</h4>';
-        str += "</a></li>";
-        return str;
+
+
+        var strT = "";
+        strT += '<div data-role="collapsible"  data-theme="b" >';
+        strT += "<h4><p><img src = '" + poiPoint.ImageUrl + "'style='width: 50px' />";
+        strT += poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h4>';
+        strT += '<p><h5> Number of partic: ' + poiPoint.NumOfParti + '</h5></p>';
+        strT += '<p><h5>  Age range" ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h5></p>';
+        strT += '<p><h5> Comments"' + poiPoint.Comments + '</h5></p>';
+        strT += '<input type="button" data-inline="true"  class="myButton" data-icon="plus" value="join" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
+        strT += '</div>';
+
+        return strT;
+
     }
 
     function GotoLogin() {
@@ -103,18 +117,18 @@
 
 
     function JoinEvent(num, lat, lng) {
-        
+
         var r = confirm("Join event?");
         if (r == true) {
             eventNum = num;
             JoinEventJson();
         }
         else {
-           
+
         }
     }
     function JoinEventJson() {
-        
+
         if (sessionStorage.Email) {
             Email = sessionStorage.Email;
 
@@ -149,5 +163,5 @@
     }
 
 
- </script>
+</script>
 </html>
