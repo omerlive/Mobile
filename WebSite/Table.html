@@ -32,7 +32,7 @@
               </ul>-->
 
             <div data-role="collapsible-set" data-theme="a" id="projectsListView" style="text-align: center"
-                data-inset="true" data-filter="true">
+                " data-filter="true">
             </div> 
          
         </div>
@@ -89,11 +89,10 @@
    
     function buildListItem(poiPoint) {
 
-
         var strT = "";
-        strT += '<div data-role="collapsible"  data-theme="b" >';
-        strT += "<h4><p><img src = '" + poiPoint.ImageUrl + "'style='width: 50px' />";
-        strT += poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h4>';
+        strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a"  >';
+        strT += "<h5><img src = '" + poiPoint.ImageUrl + "'style='width: 40px' />";
+        strT += poiPoint.DateTimeStr + ' ' + poiPoint.Address + '</h5>';
         strT += '<p><h5> Number of partic: ' + poiPoint.NumOfParti + '</h5></p>';
         strT += '<p><h5>  Age range" ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h5></p>';
         strT += '<p><h5> Comments"' + poiPoint.Comments + '</h5></p>';
@@ -101,7 +100,6 @@
         strT += '</div>';
 
         return strT;
-
     }
 
     function GotoLogin() {
