@@ -23,10 +23,9 @@
             </h1>
             <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>-->
             
-            <a data-role="button" data-icon="user" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px">
-                <label id="LogInLbl">
-                   Log in</label>
-            </a>
+            <a data-role="button" id="logbtn"data-icon="user" onclick="GotoLogin()" data-iconpos="top" data-corners="true" data-theme="a" style="margin-top: 15px; font-size: 11px;">
+            Log in</a>
+            <label id="userLbl" style="float: right"></label>
         </div>
         <div data-role="content" >
             <div id="mapholder" style="height: 347px">
@@ -49,7 +48,7 @@
 
     function initialize() {
         checkLogIn();
-
+  
 
         // center the map in Ruppin
         var ruppinPos = new Object();
@@ -211,7 +210,8 @@
     function checkLogIn() {
 
         if ((sessionStorage.Email)) {
-            document.getElementById("LogInLbl").innerText = "Log Out";
+            document.getElementById("logbtn").innerText = "Log Out";
+            document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
         }
     }
         
