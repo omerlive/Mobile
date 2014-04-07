@@ -96,11 +96,11 @@
                 <input type="text" name="comments" id="commentsTb" placeholder="Comments..." data-clear-btn="true">
             </div>
             <div>
-                <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Submit">
+                <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Submit" data-icon="check" data-iconpos="right">
             </div>
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed">
-            <nav data-role="navbar" data-divider-theme="c">
+            <nav data-role="navbar" data-divider-theme="a">
                 <ul>
                     <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
                     <li><a href="Table.html" data-icon="bullets" onclick="GotoTable()">Table View</a></li>
@@ -136,6 +136,7 @@
         else {
             address = "";
         }
+
         if (sessionStorage.FinalPositonS) {
             postemp = sessionStorage.FinalPositonS;
             postemp = postemp.replace("(", "")
@@ -151,7 +152,7 @@
 
         }
 
-        setPOI(lat, lng, nop, category, type, frequecy, minAge, maxAge, address, time, comments,adminId);
+        setPOI(lat, lng, nop, category, type, frequecy, minAge, maxAge, address, time, comments, adminId);
         GotoHome();
     }
 
@@ -177,8 +178,8 @@
 
 
     function setPOI(lat, lng, nop, category, type, frequecy, minAge, maxAge, address, time, comments, adminId) {
-        var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'frequecy:' + frequecy + ',' + 'minAge:' + minAge + ',' + 'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '",adminId:'+adminId+'}';
-
+        var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'frequecy:' + frequecy + ',' + 'minAge:' + minAge + ',' + 'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '",' + 'adminId:'+ adminId + '}';
+        alert(dataString);
         $.ajax({ // ajax call starts
             url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/setPOI',   // server side method
             data: dataString,    // the parameters sent to the server
@@ -187,17 +188,15 @@
             contentType: 'application/json; charset = utf-8',
             success: function (data) // Variable data contains the data we get from serverside
             {
-
+                alert("New event created!");
             }, // end of success
             error: function (e) {
-
+                //                alert("There was an eror creating the event.");
+                alert("failed in creating :( " + e.responseText);
             } // end of error
         }) // end of ajax call
     }
 
-
-    function Itsworek() {
-        alert("work");
-    }
+   
 </script>
 </html>
