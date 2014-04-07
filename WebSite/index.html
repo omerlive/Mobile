@@ -21,6 +21,7 @@
                 <img src="icons/logo.png" height="50px" /></h1>
             <a id="userLbl" class="userImageClass">
                 <img id="userImage" width="30px" height="30px" /></a>
+                <img id="image" class="userImage" /></a>
         </div>
         <div data-role="content">
             <div id="mapholder" style="height: 347px">
@@ -142,16 +143,18 @@
 
 
     function GotoMap() {
+        if (sessionStorage.adminId)
+        { window.location.assign("mapPage.html"); }
+        else {
+            alert("You have to login first.");
 
-        window.location.assign("mapPage.html");
+        }
     }
 
     function GotoLogin() {
-
         window.location.assign("LogIn.html");
     }
     function GotoTable() {
-
         window.location.assign("Table.html");
     }
 
@@ -196,10 +199,6 @@
         }
 
         CloseInfo();
-        //        infowindow1.close(map);
-        //        infowindow2.close(map);
-
-
     }
 
 
@@ -208,7 +207,7 @@
         if ((sessionStorage.Email)) {
             document.getElementById("logbtn").innerText = "Change User";
             //document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
-            img = document.getElementById("userImage");
+//            img = document.getElementById("image");
             img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/" + sessionStorage.ImageUrl;
         }
     }

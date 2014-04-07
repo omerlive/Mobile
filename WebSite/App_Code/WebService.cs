@@ -77,7 +77,7 @@ public class WebService : System.Web.Services.WebService
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 
-    public string setPOI(double lat, double lng, int nop, int category, string type, int frequecy, int minAge, int maxAge, string address, string time, string comments)
+    public string setPOI(double lat, double lng, int nop, int category, string type, int frequecy, int minAge, int maxAge, string address, string time, string comments,int adminId)
     {
         EventOnAir ev = new EventOnAir();
         ev.Point = new Point(lat, lng);
@@ -90,7 +90,7 @@ public class WebService : System.Web.Services.WebService
         ev.DateTimeStr = time;
         ev.Comments = comments;
         ev.Frequency = frequecy;
-        //ev.AdminID = int.Parse(dt.Rows[0]["AdminId"].ToString());
+        ev.AdminID = adminId;
 
         JavaScriptSerializer js = new JavaScriptSerializer();
         string jsonString = js.Serialize("ok");
@@ -150,6 +150,7 @@ public class WebService : System.Web.Services.WebService
                     U1.Email = dt.Rows[0]["Email"].ToString();
                     U1.ImageUrl = dt.Rows[0]["Picture"].ToString();
                     U1.UserName = dt.Rows[0]["UserName"].ToString();
+                    U1.UserId = int.Parse(dt.Rows[0]["AdminId"].ToString());
                     jsonString = js.Serialize(U1);
                 }   
             }
