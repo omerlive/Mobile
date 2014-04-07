@@ -3,39 +3,24 @@
 <head>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
-    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>-->
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
-    <!--<script src="js/MovieReplace.js" type="text/javascript"></script>-->
-
-
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    
 </head>
 <body>
-    <!-- This is the skeleton for the main page -->
     <div data-role="page" id="projectsPage">
-        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c">
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false"
+            style="background-color: #38c">
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
-          <a data-role="button" data-icon="gear" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px">
-                <label id="LogInLbl">
-                   Log in</label>
-            </a>
-        </div>
+            <a data-role="button" id="logbtn"data-icon="user" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px;"></a>
+            </div>
         <div data-role="content">
-            <!--  <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
-              </ul>-->
-
-            <div data-role="collapsible-set" data-theme="a" id="projectsListView" data-filter="true" style="text-align: center" >
-                
-            </div> 
-          
-         
+            <div data-role="collapsible-set" data-theme="a" id="projectsListView" data-filter="true"
+                style="text-align: center">
+            </div>
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="a">
@@ -71,7 +56,6 @@
                 str = '';
                 // run on all the POIs and display them
                 for (i = 0; i < poiList.length; i++) {
-
                     str += buildListItem(poiList[i]); // add item to the list in the main events page
                 }
 
@@ -85,15 +69,15 @@
         }) // end of ajax call
     }
 
-     
 
-   
+
+
     function buildListItem(poiPoint) {
 
         var strT = "";
         strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a" data-iconpos="right"  >';
-        strT += "'<p><h5><img src = '" + poiPoint.ImageUrl + "'style='width: 30px' />";
-        strT +=  poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h5>';
+        strT += "'<p><h5><img src = '" + poiPoint.ImageUrl + "'style='width: 30px'/>";
+        strT += poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h5>';
         strT += '<p><h2>' + poiPoint.Description + '<h2><p>';
         strT += '<p><h3> Number of partic: ' + poiPoint.NumOfParti + '</h3></p>';
         strT += '<p><h3>  Age range: ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h3></p>';
