@@ -9,14 +9,16 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
 <body>
+    
     <div data-role="page" id="projectsPage">
         <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false"
             style="background-color: #38c">
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
-            <a data-role="button" id="logbtn"data-icon="user" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px;"></a>
-            </div>
+            <a data-role="button" id="logbtn" data-icon="user" onclick="GotoLogin()" data-iconpos="notext"
+                data-corners="true" data-theme="a" style="margin-top: 30px;"></a>
+        </div>
         <div data-role="content">
             <div data-role="collapsible-set" data-theme="a" id="projectsListView" data-filter="true"
                 style="text-align: center">
@@ -76,14 +78,14 @@
 
         var strT = "";
         strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a" data-iconpos="right"  >';
-        strT += "'<p><h5><img src = '" + poiPoint.ImageUrl + "'style='width: 30px'/>";
+        strT += '<p><h5><img src = "' + poiPoint.ImageUrl + '"style="width: 30px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp';
         strT += poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h5>';
-        strT += '<p><h2>' + poiPoint.Description + '<h2><p>';
-        strT += '<p><h3> Number of partic: ' + poiPoint.NumOfParti + '</h3></p>';
-        strT += '<p><h3>  Age range: ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h3></p>';
-        strT += '<p><h3> Comments: ' + poiPoint.Comments + '</h3></p>';
+        strT += '<p><h3>' + poiPoint.Description + '</h3><p>';
+        strT += '<p><h4> Number of partic: ' + poiPoint.NumOfParti + '</h4></p>';
+        strT += '<p><h5>  Age range: ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h5></p>';
+        strT += '<p><h5> Comments: ' + poiPoint.Comments + '</h5></p>';
         strT += '<input type="button" data-inline="true"  class="myButton" data-icon="plus" value="join" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
-        strT += '</div>';
+        strT += '</br></div>';
 
         return strT;
     }
