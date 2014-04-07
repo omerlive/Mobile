@@ -2,9 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
@@ -18,18 +15,23 @@
     <div data-role="page" id="pagehome">
         <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false"
             style="background-color: #38c; text-align: center; display: inline;">
+<<<<<<< HEAD
+            <a data-role="button" id="logbtn" data-icon="user" onclick="GotoLogin()" data-iconpos="top"
+                data-corners="true" data-theme="a" style="margin-top: 30px;"></a>
+            <h1>
+                <img src="icons/logo.png" height="50px" /></h1>
+            <a id="userLbl" class="userImageClass">
+                <img id="userImage" width="30px" height="30px" /></a>
+=======
             <a data-role="button" id="logbtn" data-icon="user" onclick="GotoLogin()" data-iconpos="notext"
                 data-corners="true" data-theme="a" style="margin-top: 30px;">Log in</a>
             <h1>
                 <img src="icons/logo.png" height="50px" /></h1>
             <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>-->
-<<<<<<< HEAD
-            <a id="userLbl">
+            <a id="userLbl"><img id="image" class="userImage"/></a>
                 <img id="image" class="userImage" /></a>
-=======
-            <a id="userLbl"><img id="userImage"/></a>
->>>>>>> 947b238215a3d6bae244637be79241652b8bfe45
             <!--<label id="userLbl" style="color: #FFFFFF; text-align: right; margin-right: 10px; float: right; display: inline;"></label>-->
+>>>>>>> 07104ae55288235da6bf20c82a0d44ecb7dc52bc
         </div>
         <div data-role="content">
             <div id="mapholder" style="height: 347px">
@@ -158,6 +160,11 @@
 
         }
     }
+<<<<<<< HEAD
+
+    function GotoLogin() {
+=======
+>>>>>>> 07104ae55288235da6bf20c82a0d44ecb7dc52bc
 
     function GotoLogin() {
         window.location.assign("LogIn.html");
@@ -207,35 +214,31 @@
         }
 
         CloseInfo();
+<<<<<<< HEAD
+        //        infowindow1.close(map);
+        //        infowindow2.close(map);
+
+
+=======
+>>>>>>> 07104ae55288235da6bf20c82a0d44ecb7dc52bc
     }
 
 
     function checkLogIn() {
 
         if ((sessionStorage.Email)) {
-            document.getElementById("logbtn").innerText = "Log Out";
+            document.getElementById("logbtn").innerText = "Change User";
             //document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
 <<<<<<< HEAD
-            //            img = document.getElementById("image");
-            //            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            a = document.getElementById("userLbl");
-            a.style.width = "30px";
-            a.style.height = "30px";
-            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            sessionStorage.Email = null;
-=======
             img = document.getElementById("userImage");
-            alert("sessionStorage.ImageUrl");
+=======
+//            img = document.getElementById("image");
+//            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
+>>>>>>> 07104ae55288235da6bf20c82a0d44ecb7dc52bc
             img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/" + sessionStorage.ImageUrl;
-            img.src = img.src.replace("\\", "/");
-//            a = document.getElementById("userLbl");
-//            a.style.width = "30px";
-//            a.style.height = "30px";
-//            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            //            sessionStorage.Email = null;
->>>>>>> 947b238215a3d6bae244637be79241652b8bfe45
         }
     }
         
-</script>mag
+</script>
+mag
 </html>

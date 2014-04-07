@@ -15,13 +15,12 @@
     <div data-role="page" id="pagehome">
         <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false"
             style="background-color: #38c; text-align: center; display: inline;">
-            <a data-role="button" id="logbtn" data-icon="user" onclick="GotoLogin()" data-iconpos="top"
+            <a data-role="button" id="logbtn" data-icon="user" onclick="GotoLogin()" data-iconpos="notext"
                 data-corners="true" data-theme="a" style="margin-top: 30px;"></a>
             <h1>
                 <img src="icons/logo.png" height="50px" /></h1>
-            <a id="userLbl" class="userImageClass">
+            <a id="userLbl" data-role="button" style="padding: 2px; margin-top: 27px; visibility: hidden;">
                 <img id="userImage" width="30px" height="30px" /></a>
-                <img id="image" class="userImage" /></a>
         </div>
         <div data-role="content">
             <div id="mapholder" style="height: 347px">
@@ -207,11 +206,12 @@
         if ((sessionStorage.Email)) {
             document.getElementById("logbtn").innerText = "Change User";
             //document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
-//            img = document.getElementById("image");
+            aLbl = document.getElementById("userLbl");
+            aLbl.style.visibility = "visible"; 
+            img = document.getElementById("userImage");
             img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/" + sessionStorage.ImageUrl;
         }
     }
         
 </script>
-mag
 </html>
