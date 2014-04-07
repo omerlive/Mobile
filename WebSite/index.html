@@ -23,11 +23,11 @@
             <a id="userLbl" data-role="button" style="padding: 2px; margin-top: 27px; visibility: hidden;">
                 <img id="userImage" width="30px" height="30px" /></a>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-tap-toggle="false">
          
             <div id="mapholder" style="height: 347px">
             </div>
-            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box" data-tap-toggle="false">
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed" data-fullscreen="true"
             data-tap-toggle="false">
@@ -54,7 +54,7 @@
         ruppinPos.long = 34.7780799865723;
         myLatlng = new google.maps.LatLng(ruppinPos.lat, ruppinPos.long);
         var mapOptions = {
-            zoom: 6,
+            zoom: 8,
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.Map
         }
