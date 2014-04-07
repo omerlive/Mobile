@@ -62,10 +62,8 @@ a {text-decoration: none}
     text-shadow: 3px 3px 0px #3d768a;
 }
 
-.userImage
+.userImageClass
 {
-    
-    background-image: url("http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg");
-    background-repeat: no-repeat;
-    background-size: 30px 30px;
+    height:30px;
+    width:30px;
 }
