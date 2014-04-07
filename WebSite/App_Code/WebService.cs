@@ -148,7 +148,7 @@ public class WebService : System.Web.Services.WebService
                     User U1 = new User();
                     U1.Fname = dt.Rows[0]["Fname"].ToString();
                     U1.Email = dt.Rows[0]["Email"].ToString();
-                    U1.ImageUrl = dt.Rows[0]["ImageUrl"].ToString();
+                    U1.ImageUrl = dt.Rows[0]["Picture"].ToString();
                     U1.UserName = dt.Rows[0]["UserName"].ToString();
                     jsonString = js.Serialize(U1);
                 }   
