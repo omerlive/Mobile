@@ -192,7 +192,7 @@ public class WebService : System.Web.Services.WebService
             }
             else
             {
-                jsonString = js.Serialize("Event is full!!!");
+                jsonString = js.Serialize("Event is full!");
             }
         }
         catch (Exception ex)
