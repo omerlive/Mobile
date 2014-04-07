@@ -41,17 +41,17 @@
                 </fieldset>
             </div>
             <div data-role="fieldcontain">
-                <input type="number" pattern="[0-9]*" name="NOP" placeholder="Number of Participants..." id="nopTb" />
+                <input type="number" pattern="[0-9]*" name="NOP" placeholder="Number of Participants..." id="nopTb" data-clear-btn="true" />
             </div>
             <div data-role="fieldcontain">
                 <label style="font-weight: bold" for="date">
                     Date:</label>
-                <input type="date" name="date" id="dateTb" placeholder="Date...">
+                <input type="date" name="date" id="dateTb" placeholder="Date..." data-clear-btn="true">
             </div>
             <div data-role="fieldcontain">
                 <label style="font-weight: bold" for="time">
                     Time:</label>
-                <input type="time" name="time" id="timeTb" placeholder="HH:MM">
+                <input type="time" name="time" id="timeTb" placeholder="HH:MM" data-clear-btn="true">
             </div>
             <div>
                 <label style="font-weight: bold">
@@ -60,7 +60,7 @@
                 <label style="font-weight: bold; color: #00CC66;" id="AddressLBL">
                 </label>
                 <br />
-                <input type="button" value="Change location strong" data-transition="slide" onclick="GotoMap()">
+                <input type="button" value="Change location strong" data-transition="slide" onclick="GotoMap()" data-clear-btn="true">
                 <a href="mapPage.html" data-role="button"  data-transition="slide">Change location</a>
             </div>
             <div data-role="fieldcontain">
@@ -94,7 +94,7 @@
             <div data-role="fieldcontain">
                 <label for="fname" style="font-weight: bold" class="ui-hidden-accessible">
                     Comments</label>
-                <input type="text" name="comments" id="commentsTb" placeholder="Comments...">
+                <input type="text" name="comments" id="commentsTb" placeholder="Comments..." data-clear-btn="true">
             </div>
             <div>
                 <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Submit">
