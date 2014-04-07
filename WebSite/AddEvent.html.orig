@@ -2,11 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Add New Event</title>
-   <!-- <link rel="stylesheet" type="text/css" media="all" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css">
-    </script>-->
-    <!--    <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Acme">   </script>-->
-    <!--    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
@@ -96,16 +91,37 @@
                 <input type="text" name="comments" id="commentsTb" placeholder="Comments..." data-clear-btn="true">
             </div>
             <div>
-                <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Submit" data-icon="check" data-iconpos="right">
+                <input type="submit" id="AddEventbtn" onclick="AddEvent()" value="Submit" data-icon="check"
+                    data-iconpos="right">
             </div>
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="a">
                 <ul>
-                    <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a href="Table.html" data-icon="bullets" onclick="GotoTable()">Table View</a></li>
+                   
+                    <li><a href="#myPopupDialog1" data-transition="flip" data-rel="popup" data-position-to="window"
+                        data-role='button' data-transition="fade" data-role="button" data-icon="home"
+                        data-iconpos="notext" data-dismissible="false" style="margin-top: 30px">Home</a></li>
+                   
+                    <li><a href="#myPopupDialog2" data-transition="flip" data-rel="popup" data-position-to="window"
+                        data-role='button' data-transition="fade" data-role="button" data-icon="bullets"
+                        data-iconpos="notext" data-dismissible="false" style="margin-top: 30px">Table View</a></li>
                 </ul>
             </nav>
+        </div>
+        <div data-role="popup" id="myPopupDialog1" data-dismissible="false">
+            <h2>
+                Leave without Add Event?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">
+                Close</a>
+            <input type="button" id="Button1" class="myButton" value="yes" onclick="GotoHome()" />
+        </div>
+        <div data-role="popup" id="myPopupDialog2" data-dismissible="false">
+            <h2>
+                 Leave without Add Event?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">
+                Close</a>
+            <input type="button" id="Button2" class="myButton" value="yes" onclick="GotoTable()" />
         </div>
     </div>
 </body>
@@ -117,7 +133,7 @@
             document.getElementById("AddressLBL").innerText = sessionStorage.AddressSe;
         }
 
-        document.addEventListener("deviceready", onDeviceReady, false);// phone gap command
+        document.addEventListener("deviceready", onDeviceReady, false); // phone gap command
     }
 
     function AddEvent() {
@@ -179,10 +195,11 @@
     function setPOI(lat, lng, nop, category, type, frequecy, minAge, maxAge, address, time, comments, adminId) {
 <<<<<<< HEAD
         var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'frequecy:' + frequecy + ',' + 'minAge:' + minAge + ',' + 'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '",' + 'adminId:'+ adminId + '}';
-        alert(dataString);
+
 =======
-        var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'frequecy:' + frequecy + ',' + 'minAge:' + minAge + ',' + 'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '",adminId:'+adminId+'}';
->>>>>>> 7ca87cb591088412e521dd66650252c22d5337e3
+        var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'frequecy:' + frequecy + ',' + 'minAge:' + minAge + ',' + 'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '",' + 'adminId:' + adminId + '}';
+        alert(dataString);
+>>>>>>> 3e50789c45805008ec117d02a20e974030289f4c
         $.ajax({ // ajax call starts
             url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/setPOI',   // server side method
             data: dataString,    // the parameters sent to the server
@@ -191,15 +208,14 @@
             contentType: 'application/json; charset = utf-8',
             success: function (data) // Variable data contains the data we get from serverside
             {
-                alert("New event created!");
+                
             }, // end of success
             error: function (e) {
                 //                alert("There was an eror creating the event.");
-                alert("failed in creating :( " + e.responseText);
+               
             } // end of error
         }) // end of ajax call
     }
 
-   
 </script>
 </html>
