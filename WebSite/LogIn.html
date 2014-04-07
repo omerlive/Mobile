@@ -43,6 +43,14 @@
                 <a data-role="button" data-inline="true" data-theme="a" onclick="LogInJson()">Log In</a>
             </div>
         </div>
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <nav data-role="navbar" data-divider-theme="c">
+                <ul>
+                    <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
+                    <li><a href="Table.html" data-icon="bullets" onclick="GotoTable()">Table View</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </body>
 <script type="text/javascript">
@@ -91,6 +99,16 @@
     function GotoRegister() {
 
         window.location.assign("register.html");
+    }
+
+    function GotoHome() {
+
+        window.location.assign("index.html");
+    }
+
+    function GotoTable() {
+
+        window.location.assign("Table.html");
     }
     
 

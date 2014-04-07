@@ -17,23 +17,32 @@
 </head>
 <body>
     <div data-role="page" id="pagehome">
-        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c; text-align: center; display: inline;">
-             <a data-role="button" id="logbtn"data-icon="user" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px;">
-            Log in</a>
-               <h1><img src="icons/logo.png" height="50px"/></h1> 
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c">
+            <h1>
+                <img src="icons/logo.png" height="50px" />
+            </h1>
             <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>-->
-            <a id="userLbl"><img id="image" class="userImage"/></a>
-            <!--<label id="userLbl" style="color: #FFFFFF; text-align: right; margin-right: 10px; float: right; display: inline;"></label>-->
+            
+<<<<<<< HEAD
+            <a data-role="button" data-icon="user" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px">
+                <label id="LogInLbl">
+                   Log in</label>
+            </a>
+=======
+            <a data-role="button" id="logbtn"data-icon="user" onclick="GotoLogin()" data-iconpos="top" data-corners="true" data-theme="a" style="margin-top: 15px; font-size: 11px;">
+            Log in</a>
+            <label id="userLbl" style="float: right"></label>
+>>>>>>> 6cba9e1c163261d6bfd725b2c75a269e236590de
         </div>
         <div data-role="content" >
             <div id="mapholder" style="height: 347px">
             </div>
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed" data-fullscreen="true" data-tap-toggle="false"> 
-            <nav data-role="navbar" data-divider-theme="a">
+            <nav data-role="navbar" data-divider-theme="b">
                 <ul>
                     <li><a data-role="button" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a data-role="button" data-icon="bullets" onclick="GotoTable()">Table View</a></li>
+                    <li><a data-role="button" data-icon="grid" onclick="GotoTable()">Table View</a></li>
                     <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
                 </ul>
             </nav>
@@ -209,14 +218,7 @@
 
         if ((sessionStorage.Email)) {
             document.getElementById("logbtn").innerText = "Log Out";
-            //document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
-//            img = document.getElementById("image");
-//            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            a = document.getElementById("userLbl");
-            a.style.width = "30px";
-            a.style.height = "30px";
-            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            sessionStorage.Email = null;
+            document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
         }
     }
         

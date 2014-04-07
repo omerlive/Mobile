@@ -18,7 +18,15 @@
 <body>
     <!-- This is the skeleton for the main page -->
     <div data-role="page" id="projectsPage">
+<<<<<<< HEAD
+<<<<<<< HEAD
         <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c">
+=======
+        <div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false">
+>>>>>>> 261d3e7d2319fc0bb2e7da2219b4e93251be2ad2
+=======
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c">
+>>>>>>> 6cba9e1c163261d6bfd725b2c75a269e236590de
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
@@ -31,10 +39,23 @@
             <!--  <ul data-role="listview" id="projectsListView" data-inset="true" data-filter="true">
               </ul>-->
 
-            <div data-role="collapsible-set" data-theme="a" id="projectsListView" data-filter="true" style="text-align: center" >
-                
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <div data-role="collapsible-set" data-theme="a" id="projectsListView" style="text-align: center"
+                data-inset="true" data-filter="true">
+=======
+            <div data-role="collapsible-set" data-theme="b" id="projectsListView" style="text-align: center"
+                " data-filter="true">
+>>>>>>> 261d3e7d2319fc0bb2e7da2219b4e93251be2ad2
+=======
+            <div data-role="collapsible-set" data-theme="b" id="projectsListView" data-filter="true" style="text-align: center"
+                 >
+=======
+            <div data-role="collapsible-set" data-theme="a" id="projectsListView" style="text-align: center"
+                " data-filter="true">
+>>>>>>> 0a895ea42f4644853b9abc4b0056fd66c46b0815
+>>>>>>> 6cba9e1c163261d6bfd725b2c75a269e236590de
             </div> 
-          
          
         </div>
         <div data-theme="a" data-role="footer" data-position="fixed">
@@ -91,13 +112,16 @@
     function buildListItem(poiPoint) {
 
         var strT = "";
+<<<<<<< HEAD
+        strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a"  >';
+=======
         strT += '<div data-role="collapsible"  data-mini="true"  data-content-theme="a" data-iconpos="right"  >';
-        strT += "'<p><h5><img src = '" + poiPoint.ImageUrl + "'style='width: 30px' />";
-        strT +=  poiPoint.DateTimeStr + '</p><p>' + poiPoint.Address + '</p></h5>';
-        strT += '<p><h2>' + poiPoint.Description + '<h2><p>';
-        strT += '<p><h3> Number of partic: ' + poiPoint.NumOfParti + '</h3></p>';
-        strT += '<p><h3>  Age range: ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h3></p>';
-        strT += '<p><h3> Comments: ' + poiPoint.Comments + '</h3></p>';
+>>>>>>> 6cba9e1c163261d6bfd725b2c75a269e236590de
+        strT += "<h5><img src = '" + poiPoint.ImageUrl + "'style='width: 40px' />";
+        strT += poiPoint.DateTimeStr + ' ' + poiPoint.Address + '</h5>';
+        strT += '<p><h5> Number of partic: ' + poiPoint.NumOfParti + '</h5></p>';
+        strT += '<p><h5>  Age range" ' + poiPoint.MinAge + '-' + poiPoint.MaxAge + '</h5></p>';
+        strT += '<p><h5> Comments"' + poiPoint.Comments + '</h5></p>';
         strT += '<input type="button" data-inline="true"  class="myButton" data-icon="plus" value="join" onclick="JoinEvent(' + poiPoint.EventNum + ',' + poiPoint.Point.Lat + ',' + poiPoint.Point.Lng + ')">';
         strT += '</div>';
 
