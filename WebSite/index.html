@@ -47,14 +47,13 @@
     function initialize() {
         checkLogIn();
 
-
         // center the map in Ruppin
         var ruppinPos = new Object();
         ruppinPos.lat = 32.082594018608;
         ruppinPos.long = 34.7780799865723;
         myLatlng = new google.maps.LatLng(ruppinPos.lat, ruppinPos.long);
         var mapOptions = {
-            zoom: 8,
+            zoom: 6,
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.Map
         }
