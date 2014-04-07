@@ -16,16 +16,16 @@
     <div data-role="page" id="pagemap">
         <div data-role="header" data-theme="a" data-fullscreen="true" data-tap-toggle="false"
             style="background-color: #38c">
-            <a href="#myPopupDialog" data-transition="flip" data-rel="popup" data-position-to="window"
-                data-transition="fade" data-role="button" data-icon="back" data-iconpos="notext"
+            <a href="#myPopupDialog" data-transition="flip" data-rel="popup" data-position-to="window" data-role='button'
+                data-transition="fade" data-role="button" data-icon="back" data-iconpos="notext" data-dismissible="false"
                 style="margin-top: 30px">Back</a>
             <h1>
                 <img src="icons/logo.png" height="50px" />
             </h1>
             <a href data-role="button" id="getLocation" data-icon="navigation" data-iconpos="notext"  style="margin-top: 30px">
-                style="margin-top: 30px" />My Location</a>
+               </a>
         </div>
-        <div data-role="popup" id="myPopupDialog">
+        <div data-role="popup" id="myPopupDialog" data-dismissible="false" >
             <h2>
                 Leave without submit?</h2>
             <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">

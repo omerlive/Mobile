@@ -122,9 +122,17 @@ public class WebService : System.Web.Services.WebService
         U1.City = City;
         U1.Email = Email;
         U1.ImageUrl = "Images\\" + imageUrl;
-      
-        int numEfect = U1.InsertNewUser();
+        try
+        {
+         int numEfect = U1.InsertNewUser();
         return numEfect;
+        }
+        catch (Exception)
+        {
+
+            return 5;
+        }
+     
     }
 
 

@@ -113,11 +113,32 @@
         <div data-theme="a" data-role="footer" data-position="fixed">
             <nav data-role="navbar" data-divider-theme="c">
                 <ul>
-                    <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a href="Table.html" data-icon="bullets" onclick="GotoTable()">Table View</a></li>
+                   <!-- <li><a href="index.html" data-icon="home" onclick="GotoHome()">Home</a></li>-->
+                    <li><a href="#myPopupDialog1" data-transition="flip" data-rel="popup" data-position-to="window"
+                        data-role='button' data-transition="fade" data-role="button" data-icon="home"
+                        data-iconpos="notext" data-dismissible="false" style="margin-top: 30px">Home</a></li>
+                    <!--<li><a href="Table.html" data-icon="bullets" onclick="GotoTable()">Table View</a></li>-->
+                    <li><a href="#myPopupDialog2" data-transition="flip" data-rel="popup" data-position-to="window"
+                        data-role='button' data-transition="fade" data-role="button" data-icon="bullets"
+                        data-iconpos="notext" data-dismissible="false" style="margin-top: 30px">Table View</a></li>
                 </ul>
             </nav>
         </div>
+        <div data-role="popup" id="myPopupDialog1" data-dismissible="false">
+            <h2>
+                Leave without register?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">
+                Close</a>
+            <input type="button" id="Button1" class="myButton" value="yes" onclick="GotoHome()" />
+        </div>
+         <div data-role="popup" id="myPopupDialog2" data-dismissible="false">
+            <h2>
+                Leave without register?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">
+                Close</a>
+            <input type="button" id="Button2" class="myButton" value="yes" onclick="GotoTable()" />
+        </div>
+        
     </div>
 </body>
 <script type="text/javascript">
@@ -272,7 +293,16 @@
 
     function fail(error) {
         alert("An error has occurred: Code = " + error.code);
-    } 
+    }
+
+    function GotoTable() {
+        window.location.assign("Table.html");
+    }
+
+    function GotoHome() {
+        window.location.assign("index.html");
+    }
+    
 
 </script>
 </html>
