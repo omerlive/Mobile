@@ -23,7 +23,7 @@
             <h1>
                 <img src="icons/logo.png" height="50px" /></h1>
             <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>-->
-            <a id="userLbl">
+            <a id="userLbl"><img id="image" class="userImage"/></a>
                 <img id="image" class="userImage" /></a>
             <!--<label id="userLbl" style="color: #FFFFFF; text-align: right; margin-right: 10px; float: right; display: inline;"></label>-->
         </div>
@@ -211,15 +211,17 @@
         if ((sessionStorage.Email)) {
             document.getElementById("logbtn").innerText = "Log Out";
             //document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
-            //            img = document.getElementById("image");
-            //            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            a = document.getElementById("userLbl");
-            a.style.width = "30px";
-            a.style.height = "30px";
-            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
-            sessionStorage.Email = null;
+//            img = document.getElementById("image");
+//            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
+            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/" + sessionStorage.ImageUrl;
+            img.src = img.src.replace("\\", "/");
+//            a = document.getElementById("userLbl");
+//            a.style.width = "30px";
+//            a.style.height = "30px";
+//            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
+            //            sessionStorage.Email = null;
         }
     }
         
-</script>
+</script>mag
 </html>
