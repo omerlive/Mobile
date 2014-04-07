@@ -10,39 +10,37 @@
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
     <script src="phonegap.js" type="text/javascript"></script>
-
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
 <body>
     <div data-role="page" id="pagehome">
-        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false" style="background-color: #38c">
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false"
+            style="background-color: #38c; text-align: center; display: inline;">
+            <a data-role="button" id="logbtn" data-icon="user" onclick="GotoLogin()" data-iconpos="notext"
+                data-corners="true" data-theme="a" style="margin-top: 30px;">Log in</a>
             <h1>
-                <img src="icons/logo.png" height="50px" />
-            </h1>
+                <img src="icons/logo.png" height="50px" /></h1>
             <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>-->
-            
 <<<<<<< HEAD
-            <a data-role="button" data-icon="user" onclick="GotoLogin()" data-iconpos="notext" data-corners="true" data-theme="a" style="margin-top: 30px">
-                <label id="LogInLbl">
-                   Log in</label>
-            </a>
+            <a id="userLbl">
+                <img id="image" class="userImage" /></a>
 =======
-            <a data-role="button" id="logbtn"data-icon="user" onclick="GotoLogin()" data-iconpos="top" data-corners="true" data-theme="a" style="margin-top: 15px; font-size: 11px;">
-            Log in</a>
-            <label id="userLbl" style="float: right"></label>
->>>>>>> 6cba9e1c163261d6bfd725b2c75a269e236590de
+            <a id="userLbl"><img id="userImage"/></a>
+>>>>>>> 947b238215a3d6bae244637be79241652b8bfe45
+            <!--<label id="userLbl" style="color: #FFFFFF; text-align: right; margin-right: 10px; float: right; display: inline;"></label>-->
         </div>
-        <div data-role="content" >
+        <div data-role="content">
             <div id="mapholder" style="height: 347px">
             </div>
         </div>
-        <div data-theme="a" data-role="footer" data-position="fixed" data-fullscreen="true" data-tap-toggle="false"> 
-            <nav data-role="navbar" data-divider-theme="b">
+        <div data-theme="a" data-role="footer" data-position="fixed" data-fullscreen="true"
+            data-tap-toggle="false">
+            <nav data-role="navbar" data-divider-theme="a">
                 <ul>
                     <li><a data-role="button" data-icon="home" onclick="GotoHome()">Home</a></li>
-                    <li><a data-role="button" data-icon="grid" onclick="GotoTable()">Table View</a></li>
+                    <li><a data-role="button" data-icon="bullets" onclick="GotoTable()">Table View</a></li>
                     <li><a data-role="button" data-icon="plus" onclick="GotoMap()">Create Event</a></li>
                 </ul>
             </nav>
@@ -55,7 +53,7 @@
 
     function initialize() {
         checkLogIn();
-  
+
 
         // center the map in Ruppin
         var ruppinPos = new Object();
@@ -153,22 +151,24 @@
 
 
     function GotoMap() {
+        if (sessionStorage.adminId)
+        { window.location.assign("mapPage.html"); }
+        else {
+            alert("You have to login first.");
 
-        window.location.assign("mapPage.html");
+        }
     }
-    
-    function GotoLogin() {
 
+    function GotoLogin() {
         window.location.assign("LogIn.html");
     }
     function GotoTable() {
-
         window.location.assign("Table.html");
     }
 
 
     function CloseInfo() {
-     infowindow2.close(map);
+        infowindow2.close(map);
     }
 
 
@@ -195,7 +195,7 @@
                     else {
                         alert("This event is already full.");
                     }
-                    
+
                 }, // end of success
                 error: function (e) {
 
@@ -207,10 +207,6 @@
         }
 
         CloseInfo();
-//        infowindow1.close(map);
-//        infowindow2.close(map);
-        
-
     }
 
 
@@ -218,9 +214,28 @@
 
         if ((sessionStorage.Email)) {
             document.getElementById("logbtn").innerText = "Log Out";
-            document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
+            //document.getElementById("userLbl").innerText = "Hi! " + sessionStorage.Fname;
+<<<<<<< HEAD
+            //            img = document.getElementById("image");
+            //            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
+            a = document.getElementById("userLbl");
+            a.style.width = "30px";
+            a.style.height = "30px";
+            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
+            sessionStorage.Email = null;
+=======
+            img = document.getElementById("userImage");
+            alert("sessionStorage.ImageUrl");
+            img.src = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/" + sessionStorage.ImageUrl;
+            img.src = img.src.replace("\\", "/");
+//            a = document.getElementById("userLbl");
+//            a.style.width = "30px";
+//            a.style.height = "30px";
+//            a.style.background = "http://proj.ruppin.ac.il/bgroup14/mobile/tar5/Images/Messi.jpg";
+            //            sessionStorage.Email = null;
+>>>>>>> 947b238215a3d6bae244637be79241652b8bfe45
         }
     }
         
-</script>
+</script>mag
 </html>
