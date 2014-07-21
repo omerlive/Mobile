@@ -1,0 +1,13 @@
+﻿body {
+}
+img
+{
+    display:block;
+    margin:0 auto;
+}
+#mapholder {
+    height:250px;
+    margin:10px;
+    border:1px solid darkgrey;
+    border-radius:5px;
+}

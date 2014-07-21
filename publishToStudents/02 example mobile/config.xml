@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.nir7"
+        version   = "1.0.0">
+    <name>FBLogin</name>
+    <description>
+        FaceBook Login
+    </description>
+    <author href="http://phonegap.com" email="nir@phonegap.com">
+        nir
+    </author>        
+    <icon src="images/icon.png"  width="57" height="57" />
+    <gap:splash src="Resources/splash/Default~iphone.png"  gap:platform="ios"  width="320" height="480" />
+    <gap:splash src="Resources/splash/Default~android.png"  gap:platform="android" gap:density="mdpi" /> <!--width="470" height="320"-->
+
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+        <param name="APP_ID" value="295645690612011" />
+        <param name="APP_NAME" value="Let' Play" />
+    </gap:plugin>
+    
+</widget>
