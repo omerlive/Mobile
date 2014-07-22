@@ -55,31 +55,63 @@
 	    }
 
         function getUserInfo() {
-            FB.api('/me', function(response) {
-	            var str="<b>Name</b> : "+response.name+"<br>";
-	  	        str +="<b>Link: </b>"+response.link+"<br>";
-	  	        str +="<b>Username:</b> "+response.username+"<br>";
-	  	        str +="<b>round(id*random): </b>"+ Math.round(parseInt( response.id) * Math.random()) +"<br>";
-	  	        //str +="<b>Email:</b> "+response.email+"<br>";
-                str +="<b>Email:</b> "+"stam@zzz.com"+"<br>";
-	  	        //document.getElementById("status").innerHTML=str;
+
+            FB.api('/me', function (response) {
+                //document.getElementById('status').innerHTML = 'Hi, ' + response.first_name + '!';
+                firstName = response.first_name;
+                lastName = response.last_name;
+                age = 27;
+                city = response.hometown_location;
+                userName = firstName + " " + lastName;
+                email = response.email;
+                password = response.id;
+                imageUrl = 'Images/EmptyProfile.jpg';
+                
+//                alert(firstName, lastName, age, city, userName, email, password, imageUrl);
+//                AddUser(firstName, lastName, age, city, userName, email, password, imageUrl);
+                
+                getPhoto();
+                    $('#Login').css('display', 'none');
+                    $('#btnLogout').css('display', 'block');
+
+                AddUser(firstName, lastName, age, city, userName, email, password, imageUrl);
+
             });
-            //$('#btnPhoto').css('display', 'block');
-            getPhoto();
-            $('#Login').css('display', 'none');
-            $('#btnLogout').css('display', 'block');
         }
+
 
 	    function getPhoto()
 	    {
-	        FB.api('/me/picture?type=square', function(response) {
-		        var str="<img src='"+response.data.url+"'/>";
-	  	        document.getElementById("status").innerHTML+=str;	  	  	    
-            });	
+	        FB.api('/me/picture?type=square', function (response) {
+                if (response.data.url == undefined) {
+                    imageUrl = 'Images/EmptyProfile.jpg';
+                    document.getElementById("status").innerHTML+= "<img src='"+imageUrl+"'/>";
+                }
+                else {
+                    imageUrl = response.data.url;
+                    var str="<img src='"+response.data.url+"'/>";
+	  	            document.getElementById("status").innerHTML+=str;
+                }
+            });
 	    }
 
 	    function Logout()
 	    {
+                $.ajax({ // ajax call starts
+                url: 'http://proj.ruppin.ac.il/bgroup14/prod/tar6/WebService.asmx/LogOut', // server side method
+                type: 'POST',
+                dataType: 'json', // Choosing a JSON datatype
+                contentType: 'application/json; charset = utf-8',
+                success: function (data) // Variable data contains the data we get from serverside
+                {
+                    //     window.location.assign("Default.aspx");
+
+                }, // end of success
+                error: function (e) {
+                    alert("error in jason");
+                } // end of error
+            }) // end of ajax call
+
 		    FB.logout(function(){document.location.reload();});
 	    }       
 
@@ -88,3 +120,82 @@
         $(document).on("pageinit", "#firstPage", function (event) {
            
         });
+
+
+        function AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl) {
+        alert('AddUser');
+        var dataString = '{UserName:"' + userName + '",' + 'Password:"' + Password + '",' + 'FirstName:"' + firstName + '",' + 'LastName:"' + lastName + '",' + 'Age:' + age + ',' + 'City:"' + city + '",' + 'Email:"' + email + '",' + 'imageUrl:"' + imageUrl + '"}';
+
+        $.ajax({ // ajax call starts
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/tar6/WebService.asmx/AdduserMobile', // server side method
+            data: dataString,    // the parameters sent to the server
+            type: 'POST',
+            dataType: 'json', // Choosing a JSON datatype
+            contentType: 'application/json; charset = utf-8',
+              success: function (data) // Variable data contains the data we get from server side
+            {    alert("success");
+                user = $.parseJSON(data.d);
+
+                if (user.Fname != undefined) {
+
+                    if (typeof (Storage) !== "undefined") {
+                        sessionStorage.Email = user.Email;
+                        sessionStorage.Fname = user.Fname;
+                        sessionStorage.ImageUrl = user.ImageUrl;
+                        sessionStorage.adminId = user.UserId;
+                    }
+                    window.location.assign("index.html");
+                }
+                else {
+                    document.getElementById("errorLbl").innerText = "Wrong email or password";
+                }
+                // run on all the POIs and display them
+
+ 
+            }, // end of success
+            error: function (e) {
+             alert("failed in getTarget add user :( " + e.responseText);
+//                alert("error in jason" + e);
+            } // end of error
+        }) // end of ajax call
+
+
+        function LogInJson() {
+
+        email = document.getElementById("emailTb").value;
+        password = document.getElementById("passwordTb").value;
+
+        var dataString = '{Email:"' + email + '",' + 'Password:"' + password + '"}';
+
+        $.ajax({ // ajax call starts
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/tar6/WebService.asmx/LoginMobile',   // server side method
+            data: dataString,    // parameters passed to the server
+            type: 'POST',
+            dataType: 'json', // Choosing a JSON datatype
+            contentType: 'application/json; charset = utf-8',
+            success: function (data) // Variable data contains the data we get from server side
+            {
+                user = $.parseJSON(data.d);
+
+                if (user.Fname != undefined) {
+
+                    if (typeof (Storage) !== "undefined") {
+                        sessionStorage.Email = user.Email;
+                        sessionStorage.Fname = user.Fname;
+                        sessionStorage.ImageUrl = user.ImageUrl;
+                        sessionStorage.adminId = user.UserId;
+                    }
+                    window.location.assign("index.html");
+                }
+                else {
+                    document.getElementById("errorLbl").innerText = "Wrong email or password";
+                }
+                // run on all the POIs and display them
+
+            }, // end of success
+            error: function (e) {
+                alert("failed in getTarget :( " + e.responseText);
+            } // end of error
+        }) // end of ajax call
+    }
+}

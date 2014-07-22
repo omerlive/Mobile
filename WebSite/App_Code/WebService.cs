@@ -108,9 +108,8 @@ public class WebService : System.Web.Services.WebService
     }
 
     //add user
-    [WebMethod]
+    [WebMethod(EnableSession = true)]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-
     public int Adduser(string UserName, string Password, string FirstName, string LastName, int Age, string City, string Email, string imageUrl)
     {
         User U1 = new User();
@@ -121,25 +120,35 @@ public class WebService : System.Web.Services.WebService
         U1.Age = Age;
         U1.City = City;
         U1.Email = Email;
-        U1.ImageUrl = "Images\\" + imageUrl;
-        try
-        {
-         int numEfect = U1.InsertNewUser();
-        return numEfect;
-        }
-        catch (Exception)
-        {
+        U1.ImageUrl = imageUrl;
 
-            return 5;
+        int numEfect = U1.InsertNewUser();
+        DataTable dt = U1.CheckPass();
+        if (dt.Rows.Count != 0)
+        {
+            if (dt.Rows[0]["UserPassword"].ToString() == U1.UserPassword)
+            {
+                HttpContext.Current.Session["Fname"] = dt.Rows[0]["Fname"].ToString();
+                HttpContext.Current.Session["UserDeatail"] = dt;
+            }
         }
-     
+        return numEfect;
     }
 
+
+    //Log Out
+    [WebMethod(EnableSession = true)]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public void LogOut()
+    {
+        HttpContext.Current.Session["Fname"] = null;
+        HttpContext.Current.Session["UserDeatail"] = null;
+    }
 
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 
-    public string Login(string Email, string Password)
+    public string LoginMobile(string Email, string Password)
     {
         User u = new User();
         u.UserPassword = Password;
@@ -151,8 +160,7 @@ public class WebService : System.Web.Services.WebService
             DataTable dt = u.CheckPass();
             if (dt.Rows.Count != 0)
             {
-                if (dt.Rows[0]["UserPassword"].ToString() == u.UserPassword)
-                {
+                
                     User U1 = new User();
                     U1.Fname = dt.Rows[0]["Fname"].ToString();
                     U1.Email = dt.Rows[0]["Email"].ToString();
@@ -160,7 +168,7 @@ public class WebService : System.Web.Services.WebService
                     U1.UserName = dt.Rows[0]["UserName"].ToString();
                     U1.UserId = int.Parse(dt.Rows[0]["UserId"].ToString());
                     jsonString = js.Serialize(U1);
-                }   
+                  
             }
            
           
