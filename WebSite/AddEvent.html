@@ -196,7 +196,7 @@
         var dataString = '{lat:' + lat + ',' + 'lng:' + lng + ',' + 'nop:' + nop + ',' + 'category:' + category + ',' + 'type:"' + type + '",' + 'frequecy:' + frequecy + ',' + 'minAge:' + minAge + ',' + 'maxAge:' + maxAge + ',' + 'address:"' + address + '",' + 'time:"' + time + '",' + 'comments:"' + comments + '",' + 'adminId:' + adminId + '}';
 
         $.ajax({ // ajax call starts
-            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/setPOI',   // server side method
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/tar6/WebService.asmx/setPOI',   // server side method
             data: dataString,    // the parameters sent to the server
             type: 'POST',
             dataType: 'json', // Choosing a JSON datatype
