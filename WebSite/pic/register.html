@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/JsFunc.js" type="text/javascript"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="Scripts/AutoComplete.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+    <script src="phonegap.js" type="text/javascript"></script>
+</head>
+<body>
+    <div data-role="page" id="registerpage">
+        <div data-role="header" data-position="fixed" data-theme="a" data-tap-toggle="false"
+            style="background-color: #38c">
+            <h1>
+                <img src="icons/logo.png" height="50px" />
+            </h1>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label for="firstName">
+                    First Name:
+                </label>
+                <input type="text" name="firstName" value="" id="firstNameTb" data-clear-btn="true" />
+                <br />
+                <label id="firstNameValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="lastName">
+                    Last Name:
+                </label>
+                <input type="text" name="lastName" value="" id="lastNameTb" data-clear-btn="true" />
+                <br />
+                <label id="lastNameTbValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="age">
+                    Age:
+                </label>
+                <input min="7" max="120" type="range" name="age" value="24" id="ageTb" pattern="[0-9]*" />
+                <br />
+                <label id="ageTbTbValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="city">
+                    City:
+                </label>
+                <input type="text" name="City" value="" id="cityTb" data-clear-btn="true" />
+                <br />
+                <label id="cityTbValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="userName">
+                    User Name:
+                </label>
+                <input type="text" name="UserName" value="" id="userNameTb" data-clear-btn="true" />
+                <br />
+                <label id="userNameValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="email">
+                    Email:
+                </label>
+                <input type="email" name="Email" value="" id="emailTb" data-clear-btn="true" />
+                <br />
+                <label id="emailValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="Password">
+                    Password
+                </label>
+                <input type="password" name="Password" value="" id="PasswordTb" data-clear-btn="true" />
+                <br />
+                <label id="PasswordTbValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="verifyPassword">
+                    Verify Password
+                </label>
+                <input type="password" name="VerifyPassword" value="" id="verifyPasswordTb" data-clear-btn="true" />
+                <label id="errorLbl" style="color: #FF3300">
+                </label>
+                <label id="verifyPasswordTbValidatorLbl" style="color: #FF3300">
+                </label>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="image">
+                    Profile Image
+                </label>
+                <input type="file" name="image" id="image" data-icon="camera" onclick="getPicture()"
+                    accept="image/*" capture>
+                <input type="button" data-icon="camera" onclick="getPicture()" id="picbtn" value="Take a photo">
+            </div>
+            <div data-role="fieldcontain">
+                <input type="submit" id="RegisBtn"data-icon="check" data-iconpos="right" onclick="NewUser()" value="Submit">
+            </div>
+        </div>
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <nav data-role="navbar" data-divider-theme="c">
+                <ul>
+                    <li><a href="#myPopupDialog1" data-transition="flip" data-rel="popup" data-position-to="window"
+                        data-role='button' data-transition="fade" data-role="button" data-icon="home"
+                        data-iconpos="notext" data-dismissible="false" ">Home</a></li>
+                    <li><a href="#myPopupDialog2" data-transition="flip" data-rel="popup" data-position-to="window"
+                        data-role='button' data-transition="fade" data-role="button" data-icon="bullets"
+                        data-iconpos="notext" data-dismissible="false" >Table View</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div data-role="popup" id="myPopupDialog1" data-dismissible="false">
+            <h2>
+                Leave without register?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">
+                Close</a>
+            <input type="button" id="Button1" class="myButton" value="Yes" onclick="GotoHome()" />
+        </div>
+        <div data-role="popup" id="myPopupDialog2" data-dismissible="false">
+            <h2>
+                Leave without register?</h2>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">
+                Close</a>
+            <input type="button" id="Button2" class="myButton" value="Yes" onclick="GotoTable()" />
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+    window.onload = pageload();
+
+    function pageload() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+
+    function NewUser() {
+
+        var isvalid = validateForm();
+
+        if (isvalid) {
+
+            firstName = document.getElementById("firstNameTb").value;
+            lastName = document.getElementById("lastNameTb").value;
+            age = document.getElementById("ageTb").value;
+            city = document.getElementById("cityTb").value;
+            userName = document.getElementById("userNameTb").value;
+            email = document.getElementById("emailTb").value;
+            Password = document.getElementById("PasswordTb").value;
+            verifyPassword = document.getElementById("verifyPasswordTb").value;
+            //            imageUrl = "";
+            imageUrl = userName + ".jpg";
+            //imageUrl = document.getElementById("image").value; //להוסיף תמונה בפון גאפ.
+            AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl);
+        }
+    }
+
+    function validateForm() {
+        var valid = true;
+        if (document.getElementById("firstNameTb").value == "") {
+            document.getElementById("firstNameValidatorLbl").innerText += "First name is required"
+            valid = false;
+        }
+
+        if (document.getElementById("lastNameTb").value == "") {
+            document.getElementById("lastNameTbValidatorLbl").innerText += "Last name is required"
+            valid = false;
+        }
+
+        if (document.getElementById("ageTb").value == "") {
+            document.getElementById("ageTbTbValidatorLbl").innerText += "Age is required"
+            valid = false;
+        }
+
+
+        if (document.getElementById("cityTb").value == "") {
+            document.getElementById("cityTbValidatorLbl").innerText += "City is required"
+            valid = false;
+        }
+
+        if (document.getElementById("userNameTb").value == "") {
+            document.getElementById("userNameValidatorLbl").innerText += "User name is required"
+            valid = false;
+        }
+
+        if (document.getElementById("emailTb").value == "") {
+            document.getElementById("emailValidatorLbl").innerText += "Email is required"
+            valid = false;
+        }
+
+        if (document.getElementById("PasswordTb").value == "") {
+            document.getElementById("PasswordTbValidatorLbl").innerText += "Password is required"
+            valid = false;
+        }
+
+        if (document.getElementById("verifyPasswordTb").value == "") {
+            document.getElementById("verifyPasswordTbValidatorLbl").innerText += "Verify Password is required"
+            valid = false;
+        }
+
+        if (document.getElementById("verifyPasswordTb").value != document.getElementById("PasswordTb").value) {
+            document.getElementById("errorLbl").innerText = "Password is not match";
+            valid = false;
+        }
+        return valid;
+    }
+
+
+    //-----------------------------------------------------------------------
+    // insert a new user to the server
+    //-----------------------------------------------------------------------
+
+    function AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl) {
+        var dataString = '{UserName:"' + userName + '",' + 'Password:"' + Password + '",' + 'FirstName:"' + firstName + '",' + 'LastName:"' + lastName + '",' + 'Age:' + age + ',' + 'City:"' + city + '",' + 'Email:"' + email + '",' + 'imageUrl:"' + imageUrl + '"}';
+
+        $.ajax({ // ajax call starts
+            url: 'http://proj.ruppin.ac.il/bgroup14/prod/WebService.asmx/Adduser', // server side method
+            data: dataString,    // the parameters sent to the server
+            type: 'POST',
+            dataType: 'json', // Choosing a JSON datatype
+            contentType: 'application/json; charset = utf-8',
+            success: function (data) // Variable data contains the data we get from serverside
+            {
+                ans = $.parseJSON(data.d);
+                if (ans == 1) {
+                    window.location.assign("LogIn.html");
+                }
+                else {
+                    alert("Register faild"); ;
+                }
+
+            }, // end of success
+            error: function (e) {
+                alert("error in jason");
+            } // end of error
+        }) // end of ajax call
+    }
+
+    //pic func
+
+    function getPicture() {
+        navigator.camera.getPicture(uploadPhoto,
+                                        function (message) { alert('get picture failed'); },
+                                        { quality: 50,
+                                            destinationType: navigator.camera.DestinationType.FILE_URI,
+                                            sourceType: navigator.camera.PictureSourceType.CAMERA
+                                        }
+                                        ); // PhoneGap method for retrieving an image from the phone's camera
+
+    } // Get Picture
+
+    function uploadPhoto(imageURI) {
+        alert("uploadPhoto");
+        //   Load(); // Start the spinning "working" animation
+        var options = new FileUploadOptions(); // PhoneGap object to allow server upload
+        options.fileKey = "file";
+        options.fileName = document.getElementById("userNameTb").value; // file name
+        options.mimeType = "image/jpeg"; // file type
+        var params = {}; // Optional parameters
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params; // add parameters to the FileUploadOptions object
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("http://proj.ruppin.ac.il/mobile/pg/picUploadServer/ReturnValue.ashx"), win, fail, options); // Upload
+    } // Upload Photo
+
+    function win(r) {
+        alert("win");
+        path = r.response;
+        img = document.getElementById("image");
+        img.src = "http://proj.ruppin.ac.il/mobile/pg/picUploadServer/" + document.getElementById("userNameTb").value + ".jpg";
+
+        // UnLoad(); // Stop "working" animation
+    } // win (upload success)
+
+    function fail(error) {
+        alert("An error has occurred: Code = " + error.code);
+    }
+
+    function GotoTable() {
+        window.location.assign("Table.html");
+    }
+
+    function GotoHome() {
+        window.location.assign("index.html");
+    }
+    
+
+</script>
+</html>

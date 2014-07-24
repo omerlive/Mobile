@@ -1,0 +1,106 @@
+﻿body
+{
+}
+
+
+H1
+{
+    text-align: center;
+    font-family: Hobo Std;
+}
+H2
+{
+    text-align: center;
+    font-family: Hobo Std;
+}
+
+iframe
+{
+    max-height: 90%;
+    max-width: 100%;
+}
+p
+{
+    text-align: center;
+    font-family: Hobo Std;
+}
+
+.imgLink
+{
+    height: 70px;
+    width: 70px;
+}
+
+a {text-decoration: none}
+
+ H5
+        {
+          /* החלפה */
+            font-family: Hobo Std;
+            color:Blue;
+        }
+        
+         H4
+        {
+         
+            
+            color:Blue;
+        }
+        
+        
+.myButton
+{
+    height:35px;
+    width:100px;
+    -moz-box-shadow: 5px 5px 10px 0px #276873;
+    -webkit-box-shadow: 5px 5px 10px 0px #276873;
+    box-shadow: 5px 5px 10px 0px #276873;
+    background-color: #3a4f63;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    text-shadow: 3px 3px 0px #3d768a;
+}
+
+.userImageClass
+{
+    height:30px;
+    width:30px;
+}
+
+#pac-input {
+        background-color: #fff;
+        padding: 0 11px 0 13px;
+        width: 200px;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        text-overflow: ellipsis;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+        margin-left: -1px;
+        padding-left: 14px;  /* Regular padding-left + 1. */
+        width: 201px;
+      }
+      
+      .controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height:30px;
+        width:20px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+    

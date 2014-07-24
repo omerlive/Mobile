@@ -2,8 +2,7 @@
         if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
         if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
         if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-        
-        var imageUrl;   
+           
 //        FB.Event.subscribe('auth.login', function(response) {
 //            alert('auth.login event');
 //        });
@@ -66,14 +65,17 @@
                 userName = firstName + " " + lastName;
                 email = response.email;
                 password = response.id;
-               
+                imageUrl = 'Images/EmptyProfile.jpg';
+                
+//                alert(firstName, lastName, age, city, userName, email, password, imageUrl);
+//                AddUser(firstName, lastName, age, city, userName, email, password, imageUrl);
+                
                 getPhoto();
                     $('#Login').css('display', 'none');
                     $('#btnLogout').css('display', 'block');
-                    
-                //alert(firstName + " " + lastName+ " " +age+ " " + city+ " " +userName+ " " + email+ " " +password+ " " +imageUrl);
+
                 AddUser(firstName, lastName, age, city, userName, email, password, imageUrl);
-              
+
             });
         }
 
@@ -121,7 +123,7 @@
 
 
         function AddUser(firstName, lastName, age, city, userName, email, Password, imageUrl) {
-        
+        alert('AddUser');
         var dataString = '{UserName:"' + userName + '",' + 'Password:"' + Password + '",' + 'FirstName:"' + firstName + '",' + 'LastName:"' + lastName + '",' + 'Age:' + age + ',' + 'City:"' + city + '",' + 'Email:"' + email + '",' + 'imageUrl:"' + imageUrl + '"}';
 
         $.ajax({ // ajax call starts
@@ -131,18 +133,18 @@
             dataType: 'json', // Choosing a JSON datatype
             contentType: 'application/json; charset = utf-8',
               success: function (data) // Variable data contains the data we get from server side
-            {    
+            {    alert("success");
                 user = $.parseJSON(data.d);
-                
+
                 if (user.Fname != undefined) {
-                
+
                     if (typeof (Storage) !== "undefined") {
                         sessionStorage.Email = user.Email;
                         sessionStorage.Fname = user.Fname;
                         sessionStorage.ImageUrl = user.ImageUrl;
                         sessionStorage.adminId = user.UserId;
                     }
-                    //window.location.assign("index.html");
+                    window.location.assign("index.html");
                 }
                 else {
                     document.getElementById("errorLbl").innerText = "Wrong email or password";
