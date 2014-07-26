@@ -18,7 +18,7 @@
 
   <gap:plugin name="com.phonegap.plugins.facebookconnect">
     <param name="APP_ID" value="295645690612011" />
-    <param name="APP_NAME" value="Let' Play" />
+    <param name="APP_NAME" value="Let's Play" />
   </gap:plugin>
 
 </widget>
