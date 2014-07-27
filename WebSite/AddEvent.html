@@ -207,11 +207,12 @@
             contentType: 'application/json; charset = utf-8',
             success: function (data) // Variable data contains the data we get from serverside
             {
+                alert(data);
                 alert("Seccessfully added!");
             }, // end of success
             error: function (e) {
-                //                alert("There was an eror creating the event.");
-               
+                alert("There was an eror creating the event.");
+
             } // end of error
         }) // end of ajax call
     }
